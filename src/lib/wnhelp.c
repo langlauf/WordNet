@@ -4,7 +4,7 @@
 
 */
 
-/* $Id: wnhelp.c,v 1.9 2001/07/27 15:23:03 wn Rel $ */
+/* $Id: wnhelp.c,v 1.12 2003/07/15 14:41:18 wn Exp $ */
 
 #include "wnconsts.h"
 
@@ -16,7 +16,7 @@
 
 static char freq_help[] =	/* FREQ */
 "Display familiarity and polysemy information for the search string. \n\
-This number represents the number of senses in WordNet. \n\
+The polysemy count is the number of senses in WordNet. \n\
 ";
 
 static char grep_help[] =	/* WNGREP */
@@ -165,8 +165,26 @@ holonym.  Synsets are indented from the left according to their level \n\
 in the hierarchy. \n\
 ";
 
-static char nomin_help[] =	/* NOMINALIZATIONS */
+static char deriv_help[] =	/* DERIVATION */
 "Display derived forms - nouns and verbs that are related morphologically. \n\
+Each related synset is preceeded by its part of speech. Each word in the \n\
+synset is followed by its sense number. \n\
+";
+
+static char domain_help[] = 	/* CLASSIFICATION */
+"Display domain to which this synset belongs. \n\
+\n\
+Each domain synset is preceeded by \"CATEGORY\", \"REGION\", or \"USAGE\" to \n\
+distinguish topical, geographic and functional classifications, and \n\
+it's part of speech.  Each word is followed by its sense number. \n\
+";
+
+static char domainterms_help[] = /* CLASS */
+"Display all synsets belonging to the domain. \n\
+\n\
+Each domain term synset is preceeded by \"CATEGORY TERM\", \"REGION TERM\", or \n\
+\"USAGE TERM\" to distinguish topical, geographic and functional classes, \n\
+and its part of speech. Each word is followed by its sense number. \n\
 ";
 
 static char nattrib_help[] =	/* ATTRIBUTE */
@@ -232,8 +250,10 @@ holo_help,
 holotree_help,
 mero_help,
 merotree_help,
-nomin_help,
+deriv_help,
 nattrib_help,
+domain_help,
+domainterms_help,
 freq_help,
 grep_help
 };
@@ -247,8 +267,10 @@ hypertree_help,
 tropo_help,
 entail_help,
 causeto_help,
-nomin_help,
+deriv_help,
 frames_help,
+domain_help,
+domainterms_help,
 freq_help,
 grep_help
  };
@@ -321,6 +343,8 @@ contained in satellite synsets are displayed followed by the indirect \n\
 antonym via the satellite's head synset. \n\
 ",
 aattrib_help,
+domain_help,
+domainterms_help,
 freq_help,
 grep_help
 
@@ -339,6 +363,8 @@ and the adjective synset that contains the word.  If the adjective synset \n\
 is a satellite synset, its head synset is also displayed. \n\
 ",
 ant_help,
+domain_help,
+domainterms_help,
 freq_help,
 grep_help
 };

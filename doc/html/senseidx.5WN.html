@@ -32,8 +32,8 @@ that refer to WordNet senses. <I>sense_key </I>s are independent of WordNet sens
 numbers and <I>synset_offset </I>s, which vary between versions of the database. 
 Using the sense index and a <I>sense_key </I>, the corresponding synset (via 
 the <I>synset_offset </I>) and WordNet sense number can easily be obtained.  A 
-mapping from noun <I>sense_key </I>s in WordNet 1.6 to corresponding 1.7.1 <I>sense_key 
-</I>s is provided with version 1.7.1, and is described in <B><A HREF="sensemap.5WN.html">sensemap</B>(5WN)</A>
+mapping from noun <I>sense_key </I>s in WordNet 1.6 to corresponding 2.0 <I>sense_key 
+</I>s is provided with version 2.0, and is described in <B><A HREF="sensemap.5WN.html">sensemap</B>(5WN)</A>
 . <P>
  See 
 <B><A HREF="wndb.5WN.html">wndb</B>(5WN)</A>
@@ -136,13 +136,13 @@ in order to save disk space.
 
 <DT><B>WNHOME</B>  </DT>
 <DD>Base directory 
-for WordNet.  Unix default is <B>/usr/local/WordNet-1.7.1 </B>, Windows default is 
-<B>C:\WordNet&nbsp;1.7.1 </B>. </DD>
+for WordNet.  Unix default is <B>/usr/local/WordNet-2.0 </B>, Windows default is 
+<B>C:\Program&nbsp;Files\WordNet\2.0 </B>. </DD>
 
 <DT><B>WNSEARCHDIR</B>  </DT>
-<DD>Directory in which the WordNet database has 
-been installed.  Unix default is <B>WNHOME/dict </B>, Windows default is <B>WNHOME\dict 
-</B>. </DD>
+<DD>Directory in which the WordNet 
+database has been installed.  Unix default is <B>WNHOME/dict </B>, Windows default 
+is <B>WNHOME\dict </B>. </DD>
 </DL>
  
 <H2><A NAME="sect7" HREF="#toc7">FILES </A></H2>
@@ -150,19 +150,19 @@ In directory <B>WNSEARCHDIR </B>:
 <DL>
 
 <DT><B>index.sense</B>  </DT>
-<DD>sense index (Unix) </DD>
+<DD>sense index 
+(Unix) </DD>
 
-<DT><B>sense.idx</B> 
- </DT>
+<DT><B>sense.idx</B>  </DT>
 <DD>sense index (Windows) </DD>
 </DL>
  
 <H2><A NAME="sect8" HREF="#toc8">SEE ALSO </A></H2>
 <B><A HREF="binsrch.3WN.html">binsrch</B>(3WN)</A>
 , <B><A HREF="wnsearch.3WN.html">wnsearch</B>(3WN)</A>
-, <B><A HREF="lexnames.5WN.html">lexnames</B>(5WN)</A>
 , 
-<B><A HREF="wnintro.5WN.html">wnintro</B>(5WN)</A>
+<B><A HREF="lexnames.5WN.html">lexnames</B>(5WN)</A>
+, <B><A HREF="wnintro.5WN.html">wnintro</B>(5WN)</A>
 , <B><A HREF="sensemap.5WN.html">sensemap</B>(5WN)</A>
 , <B><A HREF="wndb.5WN.html">wndb</B>(5WN)</A>
 , <B><A HREF="wninput.5WN.html">wninput</B>(5WN)</A>

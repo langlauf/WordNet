@@ -19,7 +19,7 @@
 #include "setutil.h"
 #endif
 
-static char *Id = "$Id: search.c,v 1.152 2002/03/22 19:39:15 wn Exp wn $";
+static char *Id = "$Id: search.c,v 1.161 2003/06/23 15:52:27 wn Exp $";
 
 /* For adjectives, indicates synset type */
 
@@ -715,11 +715,13 @@ static void tracecoords(SynsetPtr synptr, int ptrtyp, int dbase, int depth)
     }
 }
 
-static void tracenomins(SynsetPtr synptr, int dbase)
+static void traceclassif(SynsetPtr synptr, int dbase, int search)
 {
     int i, j, idx;
     SynsetPtr cursyn;
-    long int prlist[32];
+    long int prlist[1024];
+    char head[60];
+    int svwnsnsflag;
 
     interface_doevents();
     if (abortsearch)
@@ -728,9 +730,11 @@ static void tracenomins(SynsetPtr synptr, int dbase)
     idx = 0;
 
     for (i = 0; i < synptr->ptrcount; i++) {
-	if (((synptr->ptrtyp[i] >= NOMIN_START) &&
-	    (synptr->ptrtyp[i] <= NOMIN_END)) &&
-	    (synptr->pfrm[i] == synptr->whichword)) {
+	if (((synptr->ptrtyp[i] >= CLASSIF_START) &&
+	     (synptr->ptrtyp[i] <= CLASSIF_END) && search == CLASSIFICATION) ||
+	    
+	    ((synptr->ptrtyp[i] >= CLASS_START) &&
+	     (synptr->ptrtyp[i] <= CLASS_END) && search == CLASS) ) {
 
 	    if (!prflag) {
 		printsns(synptr, sense + 1);
@@ -748,7 +752,85 @@ static void tracenomins(SynsetPtr synptr, int dbase)
 	    if (j == idx) {
 		prlist[idx++] = synptr->ptroff[i];
 		printspaces(TRACEP, 0);
-		printsynset("<-> ", cursyn, "\n", DEFON, ALLWORDS,
+
+		if (synptr->ptrtyp[i] == CLASSIF_CATEGORY)
+		    strcpy(head, "CATEGORY->(");
+		else if (synptr->ptrtyp[i] == CLASSIF_USAGE)
+		    strcpy(head, "USAGE->(");
+		else if (synptr->ptrtyp[i] == CLASSIF_REGIONAL)
+		    strcpy(head, "REGION->(");
+		else if (synptr->ptrtyp[i] == CLASS_CATEGORY)
+		    strcpy(head, "CATEGORY_TERM->(");
+		else if (synptr->ptrtyp[i] == CLASS_USAGE)
+		    strcpy(head, "USAGE_TERM->(");
+		else if (synptr->ptrtyp[i] == CLASS_REGIONAL)
+		    strcpy(head, "REGION_TERM->(");
+
+		strcat(head, partnames[synptr->ppos[i]]);
+		strcat(head, ") ");
+
+		svwnsnsflag = wnsnsflag;
+		wnsnsflag = 1;
+
+		printsynset(head, cursyn, "\n", DEFOFF, ALLWORDS,
+			    SKIP_ANTS, SKIP_MARKER);
+
+		wnsnsflag = svwnsnsflag;
+	    }
+
+	    free_synset(cursyn);
+	}
+    }
+}
+
+static void tracenomins(SynsetPtr synptr, int dbase)
+{
+    int i, j, idx;
+    SynsetPtr cursyn;
+    long int prlist[1024];
+    char prefix[40], tbuf[20];
+
+    interface_doevents();
+    if (abortsearch)
+	return;
+
+    idx = 0;
+
+    for (i = 0; i < synptr->ptrcount; i++) {
+	if ((synptr->ptrtyp[i] == DERIVATION) &&
+	    (synptr->pfrm[i] == synptr->whichword)) {
+
+	    if (!prflag) {
+		printsns(synptr, sense + 1);
+		prflag = 1;
+	    }
+
+	    printspaces(TRACEP, 0);
+
+	    sprintf(prefix, "RELATED TO->(%s) ",
+		    partnames[synptr->ppos[i]]);
+	    	    
+	    cursyn = read_synset(synptr->ppos[i], synptr->ptroff[i], "");
+
+	    sprintf(tbuf, "#%d\n",
+		    cursyn->wnsns[synptr->pto[i] - 1]);
+	    printsynset(prefix, cursyn, tbuf, DEFOFF, synptr->pto[i],
+			SKIP_ANTS, SKIP_MARKER);
+
+	    /* only print synset once, even if more than one link */
+
+	    for (j = 0; j < idx; j++) {
+#ifdef FOOP
+		if (synptr->ptroff[i] == prlist[j]) {
+		    break;
+		}
+#endif
+	    }
+
+	    if (j == idx) {
+		prlist[idx++] = synptr->ptroff[i];
+		printspaces(TRACEP, 2);
+		printsynset("=> ", cursyn, "\n", DEFON, ALLWORDS,
 			    SKIP_ANTS, PRINT_MARKER);
 	    }
 
@@ -975,7 +1057,7 @@ static void printseealso(SynsetPtr synptr)
 {
     SynsetPtr cursyn;
     int i, first = 1;
-    int svwnsnsflag;
+   int svwnsnsflag;
     static char firstline[] = "          Also See-> ";
     static char otherlines[] = "; ";
     char *prefix = firstline;
@@ -1055,6 +1137,7 @@ void wngrep (char *word_passed, int pos) {
    rewind(inputfile);
 
    strcpy (word, word_passed);
+   ToLowerCase(word);		/* map to lower case for index file search */
    strsubst (word, ' ', '_');	/* replace spaces with underscores */
    wordlen = strlen (word);
 
@@ -1751,8 +1834,13 @@ char *findtheinfo(char *searchstr, int dbase, int ptrtyp, int whichsense)
 			    	printframe(cursyn, 0);
 			    break;
 
-			case NOMINALIZATIONS:
+			case DERIVATION:
 			    tracenomins(cursyn, dbase);
+			    break;
+
+			case CLASSIFICATION:
+			case CLASS:
+			    traceclassif(cursyn, dbase, ptrtyp);
 			    break;
 
 		    	default:
@@ -2077,28 +2165,19 @@ unsigned int is_defined(char *searchstr, int dbase)
 		retval |= bit(index->ptruse[i]);
 	    }
 
-	    if (index->ptruse[i] >= NOMIN_START &&
-		 index->ptruse[i] <= NOMIN_END) {
-		retval |= bit(NOMINALIZATIONS);
-	    }
-
+#ifdef FOOP
 
 	    if (index->ptruse[i] >= CLASSIF_START &&
 		 index->ptruse[i] <= CLASSIF_END) {
-#ifdef FOOP
-/* add later */		
 		retval |= bit(CLASSIFICATION);
-#endif
 	    }
 
 
 	    if (index->ptruse[i] >= CLASS_START &&
 		 index->ptruse[i] <= CLASS_END) {
-#ifdef FOOP
-/* add later */		
 		retval |= bit(CLASS);
-#endif
 	    }
+#endif
 
 	    if (index->ptruse[i] >= ISMEMBERPTR &&
 	       index->ptruse[i] <= ISPARTPTR)
@@ -2276,7 +2355,7 @@ static void printsynset(char *head, SynsetPtr synptr, char *tail, int definition
 	prlexid = 1;		/* print lexicographer id after word */
     } else
 	prlexid = 0;
-    
+
     if (wdnum)			/* print only specific word asked for */
 	catword(tbuf, synptr, wdnum - 1, markerflag, antflag);
     else			/* print all words in synset */
@@ -2290,7 +2369,7 @@ static void printsynset(char *head, SynsetPtr synptr, char *tail, int definition
 	strcat(tbuf," -- ");
 	strcat(tbuf,synptr->defn);
     }
-    
+
     strcat(tbuf,tail);
     printbuffer(tbuf);
 }
@@ -2505,6 +2584,33 @@ static void interface_doevents (void) {
   Revision log: (since version 1.5)
   
   $Log: search.c,v $
+  Revision 1.161  2003/06/23 15:52:27  wn
+  cleaned up format of nomin output
+
+  Revision 1.160  2003/06/05 15:29:45  wn
+  added pos and sense number for domains
+
+  Revision 1.159  2003/04/15 13:54:16  wn
+  *** empty log message ***
+
+  Revision 1.158  2003/03/20 19:31:36  wn
+  removed NOMIN_START/NOMIN_END range and replaced with DERIVATION
+
+  Revision 1.157  2003/02/06 19:01:36  wn
+  added code to print out word pointed to in derivational links.
+
+  Revision 1.156  2003/02/06 18:03:30  wn
+  work on classifications
+
+  Revision 1.155  2002/10/29 15:46:27  wn
+  added CLASSIFICATION code
+
+  Revision 1.154  2002/09/16 15:43:01  wn
+  allow "grep" string to be in upper case
+
+  Revision 1.153  2002/09/16 15:39:16  wn
+  *** empty log message ***
+
   Revision 1.152  2002/03/22 19:39:15  wn
   fill in key field in SynsetPtr if key file found
 

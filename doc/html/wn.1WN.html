@@ -12,7 +12,7 @@
 wn - command line interface to WordNet lexical database    
 <H2><A NAME="sect1" HREF="#toc1">SYNOPSIS 
 </A></H2>
-<B>wn </B> [ <I>searchstr </I> ] [ <B>-h </B>] [ <B>-g </B> ] [ <B>-a </B> ] [ <B>-l </B> ] [ <B>-o </B> ] [ <B>-s </B> ] [  -n<I># </I> ] [ 
+<B>wn </B> [ <I>searchstr </I> ] [ <B>-h </B>] [ <B>-g </B> ] [ <B>-a </B> ] [ <B>-l </B> ] [ <B>-o </B> ] [ <B>-s </B> ] [ <B>-n<I># </I></B> ] [ 
 <I>search_option </I>... ]  
 <H2><A NAME="sect2" HREF="#toc2">DESCRIPTION </A></H2>
 <B>wn() </B> provides a command line interface 
@@ -114,96 +114,108 @@ hyponyms (subordinates) for <I>searchstr </I> (<I>_____ IS A KIND OF </I> <I>sea
 prints the immediate hypernym for each synset that contains <I>searchstr 
 </I> and the hypernym's immediate hyponyms. </DD>
 
+<DT><B>-deri </B>(<I>n </I> | <I>v </I>)  </DT>
+<DD>Display derivational 
+morphology links between noun and verb forms. </DD>
+
+<DT><B>-domn </B>(<I>n </I> | <I>v </I> | <I>a </I> | <I>r </I>)  </DT>
+<DD>Display 
+domain that <I>searchstr </I> has been classified in. </DD>
+
+<DT><B>-domt </B>(<I>n </I> | <I>v </I> | <I>a </I> | <I>r </I>)  </DT>
+<DD>Display 
+all terms classified as members of the <I>searchstr </I>'s domain. </DD>
+
 <DT><B>-subsn</B>  </DT>
-<DD>Display substance meronyms 
-of <I>searchstr </I> (<I>HAS SUBSTANCE </I> relation). </DD>
+<DD>Display 
+substance meronyms of <I>searchstr </I> (<I>HAS SUBSTANCE </I> relation). </DD>
 
 <DT><B>-partn</B>  </DT>
-<DD>Display part meronyms of 
-<I>searchstr </I> (<I>HAS PART </I> relation). </DD>
+<DD>Display 
+part meronyms of <I>searchstr </I> (<I>HAS PART </I> relation). </DD>
 
 <DT><B>-membn</B>  </DT>
-<DD>Display member meronyms of <I>searchstr 
-</I> (<I>HAS MEMBER </I> relation). </DD>
+<DD>Display member 
+meronyms of <I>searchstr </I> (<I>HAS MEMBER </I> relation). </DD>
 
 <DT><B>-meron</B>  </DT>
-<DD>Display all meronyms of <I>searchstr </I> (<I>HAS 
-PART, HAS MEMBER, HAS SUBSTANCE </I> relations). </DD>
+<DD>Display all meronyms 
+of <I>searchstr </I> (<I>HAS PART, HAS MEMBER, HAS SUBSTANCE </I> relations). </DD>
 
-<DT><B>-hmern</B>  </DT>
-<DD>Display meronyms for 
-<I>searchstr </I> tree.  This is a recursive search that prints all the meronyms 
-of <I>searchstr </I> and all of its hypernyms. </DD>
+<DT><B>-hmern</B>  
+</DT>
+<DD>Display meronyms for <I>searchstr </I> tree.  This is a recursive search that 
+prints all the meronyms of <I>searchstr </I> and all of its hypernyms. </DD>
 
-<DT><B>-sprtn</B>  </DT>
-<DD>Display <I>part of </I> holonyms 
-of <I>searchstr </I> (<I>PART OF </I> relation). </DD>
+<DT><B>-sprtn</B>  
+</DT>
+<DD>Display <I>part of </I> holonyms of <I>searchstr </I> (<I>PART OF </I> relation). </DD>
 
 <DT><B>-smemn</B>  </DT>
-<DD>Display <I>member of </I> holonyms of 
-<I>searchstr </I> (<I>MEMBER OF </I> relation). </DD>
+<DD>Display 
+<I>member of </I> holonyms of <I>searchstr </I> (<I>MEMBER OF </I> relation). </DD>
 
 <DT><B>-ssubn</B>  </DT>
-<DD>Display <I>substance of </I> holonyms 
-of <I>searchstr </I> (<I>SUBSTANCE OF </I> relation). </DD>
+<DD>Display 
+<I>substance of </I> holonyms of <I>searchstr </I> (<I>SUBSTANCE OF </I> relation). </DD>
 
 <DT><B>-holon</B>  </DT>
-<DD>Display all holonyms of 
-<I>searchstr </I> (<I>PART OF, MEMBER OF, SUBSTANCE OF </I> relations). </DD>
+<DD>Display 
+all holonyms of <I>searchstr </I> (<I>PART OF, MEMBER OF, SUBSTANCE OF </I> relations). 
+</DD>
 
 <DT><B>-hholn</B>  </DT>
-<DD>Display 
-holonyms for <I>searchstr </I> tree.  This is a recursive search that prints all 
-the holonyms of <I>searchstr </I> and all of each holonym's holonyms. </DD>
+<DD>Display holonyms for <I>searchstr </I> tree.  This is a recursive search 
+that prints all the holonyms of <I>searchstr </I> and all of each holonym's holonyms. 
+</DD>
 
 <DT><B>-entav</B>  </DT>
-<DD>Display 
-entailment relations of <I>searchstr </I>. </DD>
+<DD>Display entailment relations of <I>searchstr </I>. </DD>
 
 <DT><B>-framv</B>  </DT>
-<DD>Display applicable verb sentence 
-frames for <I>searchstr </I>.  </DD>
+<DD>Display applicable 
+verb sentence frames for <I>searchstr </I>.  </DD>
 
 <DT><B>-causv</B>  </DT>
-<DD>Display <I>cause to </I> relations of <I>searchstr 
-</I>. </DD>
+<DD>Display <I>cause to </I> relations 
+of <I>searchstr </I>. </DD>
 
 <DT><B> -pert </B>(<I>a </I> | <I>r </I>)  </DT>
 <DD>Display pertainyms of <I>searchstr </I>. </DD>
 
-<DT><B> -attr </B>(<I>n </I> | <I>a </I>)  </DT>
-<DD>Display 
-adjective values for noun attribute, or noun attributes of adjective values. 
-</DD>
+<DT><B> -attr </B>(<I>n 
+</I> | <I>a </I>)  </DT>
+<DD>Display adjective values for noun attribute, or noun attributes 
+of adjective values. </DD>
 
 <DT><B>-grep </B>(<I>n </I> | <I>v </I> | <I>a </I> | <I>r </I>)  </DT>
-<DD>List compound words containing <I>searchstr </I> as a 
-substring. </DD>
+<DD>List compound words containing 
+<I>searchstr </I> as a substring. </DD>
 </DL>
  
 <H2><A NAME="sect5" HREF="#toc5">SEARCH RESULTS </A></H2>
-The results of a search are written to the standard 
-output.  For each search, the output consists a one line description of 
-the search, followed by the search results. <P>
- All searches other than <B>-over 
-</B> list all senses matching the search results in the following general 
-format.  Items enclosed in italicized square brackets (<I>[&nbsp;...&nbsp;] </I>) may not be 
-present. <P>
-  <blockquote>One line listing the number of senses matching the search request. 
-<P>
- Each sense matching the search requested displayed as follows: <P>
- <tt> </tt>&nbsp;<tt> </tt>&nbsp;<B>Sense 
-<I>n </I></B> <BR>
- <tt> </tt>&nbsp;<tt> </tt>&nbsp;<I>[<B>{<I>synset_offset<B>}<I>] [<B>&lt;<I>lex_filename<B>&gt;<I>]&nbsp;&nbsp;word1[<B>#<I>sense_number][,&nbsp;&nbsp;word2...] </I></B></I></B></I></B></I></B></I></B></I> 
-<BR>
+The results of a search are 
+written to the standard output.  For each search, the output consists a 
+one line description of the search, followed by the search results. <P>
+ All 
+searches other than <B>-over </B> list all senses matching the search results 
+in the following general format.  Items enclosed in italicized square brackets 
+(<I>[&nbsp;...&nbsp;] </I>) may not be present. <P>
+  <blockquote>One line listing the number of senses matching 
+the search request. <P>
+ Each sense matching the search requested displayed 
+as follows: <P>
+ <tt> </tt>&nbsp;<tt> </tt>&nbsp;<B>Sense <I>n </I></B> <BR>
+ <tt> </tt>&nbsp;<tt> </tt>&nbsp;<I>[<B>{<I>synset_offset<B>}<I>] [<B>&lt;<I>lex_filename<B>&gt;<I>]&nbsp;&nbsp;word1[<B>#<I>sense_number][,&nbsp;&nbsp;word2...] 
+</I></B></I></B></I></B></I></B></I></B></I> <BR>
  <P>
- Where <I>n </I> is the sense number of the search word, <I>synset_offset </I> is the 
-byte offset of the synset in the <B>data.<I>pos </I></B> file corresponding to the syntactic 
-category, <I>lex_filename </I> is the name of the lexicographer file that the 
-synset comes from, <I>word1 </I> is the first word in the synset (note that this 
-is not necessarily the search word) and <I>sense_number </I> is the WordNet sense 
-number assigned to the preceding word. <I>synset_offset </I>, <I>lex_filename </I>, and 
-<I>sense_number </I> are generated when the <B>-o </B>, <B>-a </B>, and <B>-s </B> options, respectively, 
+ Where <I>n </I> is the sense number of the search word, <I>synset_offset </I> is 
+the byte offset of the synset in the <B>data.<I>pos </I></B> file corresponding to the 
+syntactic category, <I>lex_filename </I> is the name of the lexicographer file 
+that the synset comes from, <I>word1 </I> is the first word in the synset (note 
+that this is not necessarily the search word) and <I>sense_number </I> is the 
+WordNet sense number assigned to the preceding word. <I>synset_offset, lex_filename 
+</I>, and <I>sense_number </I> are generated when the <B>-o, -a, </B> and <B>-s </B> options, respectively, 
 are specified. <P>
  The synsets matching the search requested are printed below 
 each sense's synset output described above.  Each line of output is preceded 
@@ -230,7 +242,7 @@ syntactic categories.  The results of this search are similar to the <B>-syns
 </B> search, however no additional (ex. hypernym) synsets are displayed, and 
 synset glosses are always printed.  The senses are grouped by syntactic 
 category, and each synset is annotated as described above with <I>synset_offset 
-</I>, <I>lex_filename </I>, and <I>sense_number </I> as dictated by the <B>-o </B>, <B>-a </B>, and <B>-s </B> options. 
+</I>, <I>lex_filename </I>, and <I>sense_number </I> as dictated by the <B>-o, -a, </B> and <B>-s </B> options. 
  The overview search also indicates how many of the senses in each syntactic 
 category are represented in the tagged texts.  This is a way for the user 
 to determine whether a sense's sense number is based on semantic tagging 
@@ -241,100 +253,117 @@ after the sense number. <P>
 of <I>searchstr </I>, the search results are headed by a string of the form: 
 <tt> </tt>&nbsp;<tt> </tt>&nbsp;X of Y senses of <I>searchstr </I> <BR>
  <P>
- When <B>-framv </B> is specified, sample illustrative 
-sentences and generic sentence frames are displayed.  If a sample sentence 
-is found, the base form of <I>search </I> is substituted into the sentence, and 
-it is printed below the synset, preceded with the <B>EX: </B> marker.  When no 
-sample sentences are found, the generic sentence frames are displayed. 
- Sentence frames that are acceptable for all words in a synset are preceded 
-by the marker <B>*&gt; </B>.  If a frame is acceptable for the search word only, it 
-is preceded by the marker <B>=&gt; </B>. <P>
- Search results for adjectives are slightly 
-different from those for other parts of speech.  When an adjective is printed, 
-its direct antonym, if it has one, is also printed in parentheses.  When 
-<I>searchstr </I> is in a head synset, all of the head synset's satellites are 
-also displayed.  The position of an adjective in relation to the noun may 
-be restricted to the <I>prenominal </I>, <I>postnominal </I> or <I>predicative </I> position. 
- Where present, these restrictions are noted in parentheses. <P>
- When an adjective 
-is a participle of a verb, the output indicates the verb and displays 
-its synset. <P>
- When an adverb is derived from an adjective, the specific 
-adjectival sense on which it is based is indicated. <P>
- The morphological 
-transformations performed by the search code may result in more than one 
-word to search for.  WordNet automatically performs the requested search 
-on all of the strings and returns the results grouped by word.  For example, 
-the verb <B>saw </B> is both the present tense of <B>saw </B> and the past tense of 
-<B>see </B>.  When passed <I>searchstr </I> <B>saw </B>, WordNet performs the desired search 
-first on <B>saw </B> and next on <B>see </B>, returning the list of <B>saw </B> senses and 
-search results, followed by those for <B>see </B>.  </blockquote>
+ The output of the <B>-deri </B> search shows word 
+forms that are morphologically related to <B>searchstr </B>. Each word form pointed 
+to from <I>searchstr </I> is displayed, preceded by <B>RELATED TO-&gt; </B> and the syntactic 
+category of the link, followed, on the next line, by its synset.  Printed 
+after the word form is <B># </B><I>n </I> where <I>n </I> indicates the WordNet sense number 
+of the term pointed to. <P>
+ The <B>-domn </B> and <B>-domt </B> searches show the domain that 
+a synset has been classified in and, conversely, all of the terms that 
+have been assigned to a specific domain.  A domain is either a <B>CATEGORY, 
+</B> <B>REGION </B> or <B>USAGE, </B> as reflected in the specific pointer character stored 
+in the database, and displayed in the output.  A <B>-domn </B> search on a term 
+shows the domain, if any, that each synset containing <I>searchstr </I> has been 
+classified in.  The output display shows the domain type (<B>CATEGORY, </B> <B>REGION 
+</B> or <B>USAGE </B>), followed by the syntactic category of the domain synset and 
+the terms in the synset.  Each term is followed by <B># </B><I>n </I> where <I>n </I> indicates 
+the WordNet sense number of the term.  The converse search, <B>-domt </B>, shows 
+all of the synsets that have been placed into the domain <I>searchstr </I>, with 
+analogous markers.  <P>
+ When <B>-framv </B> is specified, sample illustrative sentences 
+and generic sentence frames are displayed.  If a sample sentence is found, 
+the base form of <I>search </I> is substituted into the sentence, and it is printed 
+below the synset, preceded with the <B>EX: </B> marker.  When no sample sentences 
+are found, the generic sentence frames are displayed.  Sentence frames 
+that are acceptable for all words in a synset are preceded by the marker 
+<B>*&gt; </B>.  If a frame is acceptable for the search word only, it is preceded 
+by the marker <B>=&gt; </B>. <P>
+ Search results for adjectives are slightly different 
+from those for other parts of speech.  When an adjective is printed, its 
+direct antonym, if it has one, is also printed in parentheses.  When <I>searchstr 
+</I> is in a head synset, all of the head synset's satellites are also displayed. 
+ The position of an adjective in relation to the noun may be restricted 
+to the <I>prenominal </I>, <I>postnominal </I> or <I>predicative </I> position.  Where present, 
+these restrictions are noted in parentheses. <P>
+ When an adjective is a participle 
+of a verb, the output indicates the verb and displays its synset. <P>
+ When 
+an adverb is derived from an adjective, the specific adjectival sense 
+on which it is based is indicated. <P>
+ The morphological transformations performed 
+by the search code may result in more than one word to search for.  WordNet 
+automatically performs the requested search on all of the strings and 
+returns the results grouped by word.  For example, the verb <B>saw </B> is both 
+the present tense of <B>saw </B> and the past tense of <B>see </B>.  When passed <I>searchstr 
+</I> <B>saw </B>, WordNet performs the desired search first on <B>saw </B> and next on <B>see 
+</B>, returning the list of <B>saw </B> senses and search results, followed by those 
+for <B>see </B>.  </blockquote>
  
 <H2><A NAME="sect6" HREF="#toc6">EXIT STATUS </A></H2>
-<B>wn() </B> normally 
-exits with the number of senses displayed.  If <I>searchword </I> is not found 
-in WordNet, it exits with <B>0 </B>. <P>
- If the WordNet database cannot be opened, 
-an error messages is displyed and <B>wn() </B> exits with <B>-1 </B>.  
-<H2><A NAME="sect7" HREF="#toc7">ENVIRONMENT VARIABLES 
-</A></H2>
+<B>wn() </B> normally exits with the number of senses 
+displayed.  If <I>searchword </I> is not found in WordNet, it exits with <B>0 </B>. <P>
+ If 
+the WordNet database cannot be opened, an error messages is displayed 
+and <B>wn() </B> exits with <B>-1 </B>.  
+<H2><A NAME="sect7" HREF="#toc7">ENVIRONMENT VARIABLES </A></H2>
 
 <DL>
 
 <DT><B>WNHOME</B>  </DT>
-<DD>Base directory for WordNet.  Unix default is  <B>/usr/local/WordNet-1.7.1 
-</B>, Windows default is <B>C:\WordNet&nbsp;1.7.1 </B>. </DD>
+<DD>Base directory 
+for WordNet.  Unix default is  <B>/usr/local/WordNet-2.0 </B>, Windows default is 
+<B>C:\Program&nbsp;Files\WordNet\2.0 </B>. </DD>
 
 <DT><B>WNSEARCHDIR</B>  </DT>
-<DD>Directory in which the 
-WordNet database has been installed.  Unix default is <B>WNHOME/dict </B>, Windows 
-default is <B>WNHOME\dict </B>. </DD>
+<DD>Directory in which the WordNet 
+database has been installed.  Unix default is <B>WNHOME/dict </B>, Windows default 
+is <B>WNHOME\dict </B>. </DD>
 </DL>
  
 <H2><A NAME="sect8" HREF="#toc8">FILES </A></H2>
-All files are in the directory <B>WNSEARCHDIR 
-</B>. 
+All files are in the directory <B>WNSEARCHDIR </B>. 
 <DL>
 
-<DT><B>index.<I>pos </I></B>  </DT>
+<DT><B>index.<I>pos 
+</I></B>  </DT>
 <DD>database index files (Unix) </DD>
 
 <DT><B><I>pos </I>.idx</B>  </DT>
-<DD>database index files 
-(Windows) </DD>
+<DD>database index files (Windows) 
+</DD>
 
 <DT><B>data.<I>pos </I></B>  </DT>
 <DD>database data files (Unix) </DD>
 
 <DT><B><I>pos </I>.dat</B>  </DT>
-<DD>database data 
-files (Windows) </DD>
-
-<DT><B>*.vrb</B>  </DT>
-<DD>files of sentences illustrating the use of verbs 
+<DD>database data files (Windows) 
 </DD>
 
+<DT><B>*.vrb</B>  </DT>
+<DD>files of sentences illustrating the use of verbs </DD>
+
 <DT><B><I>pos </I>.exc</B>  </DT>
-<DD>morphology exception lists </DD>
+<DD>morphology 
+exception lists </DD>
 </DL>
  
 <H2><A NAME="sect9" HREF="#toc9">SEE ALSO </A></H2>
 <B><A HREF="wnintro.1WN.html">wnintro</B>(1WN)</A>
 , <B><A HREF="wnb.1WN.html">wnb</B>(1WN)</A>
-, 
-<B><A HREF="wnintro.3WN.html">wnintro</B>(3WN)</A>
+, <B><A HREF="wnintro.3WN.html">wnintro</B>(3WN)</A>
 , <B><A HREF="lexnames.5WN.html">lexnames</B>(5WN)</A>
-, <B><A HREF="senseidx.5WN.html">senseidx</B>(5WN)</A>
+, 
+<B><A HREF="senseidx.5WN.html">senseidx</B>(5WN)</A>
  <B><A HREF="wndb.5WN.html">wndb</B>(5WN)</A>
 ,<B></B> <B><A HREF="wninput.5WN.html">wninput</B>(5WN)</A>
 , <B><A HREF="morphy.7WN.html">morphy</B>(7WN)</A>
-, 
-<B><A HREF="wngloss.7WN.html">wngloss</B>(7WN)</A>
+, <B><A HREF="wngloss.7WN.html">wngloss</B>(7WN)</A>
 , <B><A HREF="wngroups.7WN.html">wngroups</B>(7WN)</A>
-.  
+. 
+ 
 <H2><A NAME="sect10" HREF="#toc10">BUGS </A></H2>
-Please report bugs to wordnet@princeton.edu. 
-<P>
+Please report bugs to wordnet@princeton.edu. <P>
 
 <HR><P>
 <A NAME="toc"><B>Table of Contents</B></A><P>

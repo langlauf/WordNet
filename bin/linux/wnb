@@ -97,7 +97,7 @@ set fontsp2offset(helvetica,3) 11;
 set labonly 0
 if {$tcl_platform(platform) == "unix"} {
    if {[lsearch -exact [array names env] WNHOME] == -1} {
-	set resourcedir "/usr/local/WordNet-1.7.1/lib/wnres"
+	set resourcedir "/usr/local/WordNet-2.0/lib/wnres"
    } else {
 	set resourcedir "$env(WNHOME)/lib/wnres"
    }
@@ -105,7 +105,7 @@ if {$tcl_platform(platform) == "unix"} {
 }
 if {$tcl_platform(platform) == "windows"} {
    if {[lsearch -exact [array names env] WNHOME] == -1} {
-	set resourcedir "/WordNet 1.7.1/lib"
+	set resourcedir "/WordNet 2.0/lib"
    } else {
 	set resourcedir "$env(WNHOME)/lib/wnres"
    }
@@ -116,7 +116,7 @@ if {$tcl_platform(platform) == "macintosh"} {
 
 ### Startup
 
-wm title . "WordNet 1.7.1 Browser"
+wm title . "WordNet 2.0 Browser"
 
 ### Primary Functions
 
@@ -246,6 +246,7 @@ proc displayoverview {searchword} {
    } 
    blackout 0
    setwordwrap $wordwrap
+   focus .results.text
    return $gotone
 }
 
@@ -316,10 +317,32 @@ proc searchanddisplay {searchword senses posnumber searchtypenumber} {
             -text "Formatting... (press escape to abort)"
 
 	set iter 0
+	set morphedword ""
+	set mword ""
 	foreach i $searchlines {
 	    .results.text insert end $i\n
 	    .results.text mark set endofline [.results.text index \
 	     "end - 1 char"]
+
+# added by RIT
+	    regexp -nocase -- \
+		"\[0-9\]+ (senses|sense) of (.+)" \
+		    $i dummy dummy mword
+	    set morphedword [string trimright $mword]
+   	    set index [string first " --" $i]
+	    set schar [string first " " $i]
+	    if {$index != -1 && $schar != 0} {
+		set line [string range $i 0 [expr $index - 1]]
+		if {[regexp -indices -nocase -- \
+			 "(\[\.\})>,\] |^|, )($morphedword)\[0-9\]*(#\[0-9\]+)?( \[(\]|,|$\)" \
+		    $line dummy dummy indices]} {
+		    .results.text tag add overviewhighlight \
+			"end - 2 lines linestart + [lindex $indices 0] chars" \
+			"end - 2 lines linestart + [expr \
+                     [lindex $indices 1] + 1] chars"
+		}
+            }
+
 	    set numspaces 0
 	    set idx [string first "->" $i]
 	    if {$idx != -1} {set numspaces \
@@ -357,6 +380,7 @@ proc searchanddisplay {searchword senses posnumber searchtypenumber} {
 	.results.text insert end [search [fixword $searchword] $posnumber \
          $searchtypenumber $sense]
       }
+
       setwordwrap $wordwrap
    }
    foreach line $posmenu($posnumber) {
@@ -796,7 +820,7 @@ proc showaboutbox {} {
          -anchor w \
          -justify left \
          -font "-adobe-helvetica-medium-r-*-*-*-120-*-*-*-*-*-*" \
-         -text "Copyright 1991-2001\nPrinceton University Cognitive Science Lab"] \
+         -text "Copyright 1991-2003\nPrinceton University Cognitive Science Lab"] \
       [label .aboutbox.top.right.text6 \
          -anchor w \
          -justify left \
@@ -1672,6 +1696,8 @@ set posmenu(1) {
    { "Meronyms (parts of this), inherited" -28 {} }
    { "Derivationally related forms" 20 {} }
    { "Attributes (...is a value of this)" 18 {} }
+   { "Domain" 21 {} }
+   { "Domain Terms" 22 {} }
    { "Familiarity" 24 {} }
 }
 set posmenu(2) {
@@ -1685,17 +1711,23 @@ set posmenu(2) {
    { "This causes..." 14 {} }
    { "Derivationally related forms" 20 {} }
    { "Sentence frames" 25 {} }
+   { "Domain" 21 {} }
+   { "Domain Terms" 22 {} }
    { "Familiarity" 24 {} }
 }
 set posmenu(3) {
    { "Synonyms/Related Nouns" 5 {} }
    { "Antonyms" 1 {} }
    { "This is a value of..." 18 {} }
+   { "Domain" 21 {} }
+   { "Domain Terms" 22 {} }
    { "Familiarity" 24 {} }
 }
 set posmenu(4) {
-   { "Synonyms/Root Adjectives" 23 {} }
+   { "Synonyms/Stem Adjectives" 23 {} }
    { "Antonyms" 1 {} }
+   { "Domain" 21 {} }
+   { "Domain Terms" 22 {} }
    { "Familiarity" 24 {} }
 }
 
@@ -1705,7 +1737,7 @@ bind .wordframe.entry <Return> golookup
 bind .results.text <Shift-Button-1> {shiftclickhandler %x %y}
 bind .results.text <Button-2> {shiftclickhandler %x %y}
 bind . <Control-s> controlshandler
-bind . <Control-g> grepword
+bind . <Control-g> "grepword substring"
 
 set g_searchword [lindex $argv 0]
 golookup

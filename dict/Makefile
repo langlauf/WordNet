@@ -1,8 +1,8 @@
 SHELL=/bin/sh
 
-# Makefile for WordNet 1.7.1 database directory "dict"
+# Makefile for WordNet 2.0 database directory "dict"
 
-WN_ROOT = /usr/local/WordNet-1.7.1
+WN_ROOT = /usr/local/WordNet-2.0
 WN_INSTALLDIR = $(WN_ROOT)/dict
 
 INSTALLCMD = cp
@@ -55,7 +55,7 @@ clean:
 	@rm -f *~ "#"*
 
 cleandbfiles:
-	@echo "Removing WordNet 1.7.1 database files from `pwd`"
+	@echo "Removing WordNet 2.0 database files from `pwd`"
 	@for file in $(WN_FILES) ; \
 	 do \
 		if [ ! -f $$file ] ; then \
@@ -65,4 +65,4 @@ cleandbfiles:
 			rm -f $$file ; \
 		fi ; \
 	done ;
-	@echo "Done removing WordNet 1.7.1 database files"
+	@echo "Done removing WordNet 2.0 database files"

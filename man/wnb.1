@@ -1,7 +1,7 @@
 '\" t
 .\" $Id$
 .tr ~
-.TH WNB 1WN "December 2001" "WordNet 1.7.1" "WordNet\(tm User Commands"
+.TH WNB 1WN "July 2003" "WordNet 2.0" "WordNet\(tm User Commands"
 .SH NAME
 wnb \- WordNet window-based browser interface 
 .SH SYNOPSIS
@@ -72,8 +72,19 @@ return."\fP  If the search word entered is not in WordNet, the message
 .SH SEARCHING THE DATABASE
 The WordNet browser navigates through WordNet in two steps.  First a
 search word is entered and an overview of all the senses of the word
-in all syntactic categories is displayed in the Results Window.  Then,
-within a syntactic category, a specific search is selected.  The
+in all syntactic categories is displayed in the Results Window.  
+The senses are
+grouped by syntactic category, and each synset is annotated as
+described above with \fIsynset_offset\fP, \fIlex_filename\fP, and
+\fIsense_number\fP as dictated by the advanced search options set.
+The overview search also indicates how many of the senses in each
+syntactic category are represented in the tagged texts.  This is a way
+for the user to determine whether a sense's sense number is based on
+semantic tagging data, or was randomly assigned.  For each sense that
+has appeared in such texts, the number of semantic tags to that sense
+are indicated in parentheses after the sense number.
+
+Then, within a syntactic category, a specific search is selected.  The
 desired search is performed and the search results are displayed in
 the Results Window.  Additional searches on the same word can be
 performed, or a new search word can be entered.
@@ -181,7 +192,8 @@ Display a popup dialog for specifying a filename to save the current
 Results Window contents to.
 .IP "Print current display"
 Display a popup dialog in which to specify a print command to which
-the current Results Window contents can be piped.
+the current Results Window contents can be piped. Note - this option
+does not exist in the Windows version.
 .IP "Clear current display"
 Clear the \fBSearch Word\fP and \fBSenses\fP boxes, and Results
 Window.
@@ -290,6 +302,12 @@ All searches other than the Overview list all senses matching the
 search results in the following general format.  Items enclosed in
 italicized square brackets (\fI[~...~]\fP) may not be present.
 
+If a search cannot be performed on some senses of \fIsearchstr\fP, the
+search results are headed by a string of the form:
+.nf
+	X of Y senses of \fIsearchstr\fP
+.fi
+
 .RS
 One line listing the number of senses matching the search selected.
 
@@ -334,6 +352,29 @@ end of a group.  See
 .BR wngroups (7WN)
 for a discussion how senses are grouped.
 
+The output of the \fB"Derivationally Related Forms"\fP 
+search shows word forms that are
+morphologically related to \fBsearchstr\fP. Each word form pointed to
+from \fIsearchstr\fP is displayed, preceded by \fBRELATED TO->\fP and
+the syntactic category of the link, followed, on the next line, by its
+synset.  Printed after the word form is \fB#\fP\fIn\fP where \fIn\fP
+indicates the WordNet sense number of the term pointed to.
+
+The \fB"Domain"\fP and \fB"Domain Terms"\fP searches show the domain that a
+synset has been classified in and, conversely, all of the terms that
+have been assigned to a specific domain.  A domain is
+either a \fBCATEGORY,\fP \fBREGION\fI or \fBUSAGE,\fP as reflected in
+the specific pointer character stored in the database, and displayed
+in the output.  A \fB\-domn\fP search on a term shows the domain, if
+any, that each synset containing \fIsearchstr\fP has been classified
+in.  The output display shows the domain type (\fBCATEGORY,\fP
+\fBREGION\fP or \fBUSAGE\fP), followed by the syntactic category of
+the domain synset and the terms in the synset.  Each term is followed
+by \fB#\fP\fIn\fP where \fIn\fP indicates the WordNet sense number of
+the term.  The converse search, \fB\-domt\fP, shows all of the synsets
+that have been placed into the domain \fIsearchstr\fP, with analogous
+markers. 
+
 When the \fB"Sentence Frames"\fP search is specified, sample
 illustrative sentences and generic sentence frames are displayed.  If
 a sample sentence is found, the base form of the search word is
@@ -375,7 +416,7 @@ database for your installation.
 .TP 20
 .B WNHOME
 Base directory for WordNet.  Unix default is 
-\fB/usr/local/WordNet-1.7.1\fP, Windows default is \fBC:\eProgram~Files\eWordNet\e1.7.1\fP.
+\fB/usr/local/WordNet-2.0\fP, Windows default is \fBC:\eProgram~Files\eWordNet\e2.0\fP.
 .TP 20
 .B WNSEARCHDIR
 Directory in which the WordNet database has been installed.  Unix

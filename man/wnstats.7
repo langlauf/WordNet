@@ -1,22 +1,24 @@
 '\" t
 .\" $Id$
-.TH WNSTATS 7WN "December 2001" "WordNet 1.7.1" "WordNet\(tm"
+.TH WNSTATS 7WN "July 2003" "WordNet 2.0" "WordNet\(tm"
 .SH NAME
-wnstats \- WordNet 1.7.1 database statistics
+wnstats \- WordNet 2.0 database statistics
 .SH DESCRIPTION
 .SS Number of words, synsets, and senses
 .TS
 center box tab(/);
 c | c | c | c
+c | c | c | c
 l | r | r | r.
-\fBPOS\fP/\fBUnique Strings\fP/\fBSynsets\fP/\fBTotal Word-Sense Pairs\fP
+\fBPOS\fP/\fBUnique\fP/\fBSynsets\fP/\fBTotal\fP
+/\fBStrings\fP//\fBWord-Sense Pairs\fP/
 _
-Noun/109195/75804/134716
-Verb/11088/13214/24169
-Adjective/21460/18576/31184
-Adverb/4607/3629/5748
+Noun/114648/79689/141690
+Verb/11306/13508/24632
+Adjective/21436/18563/31015
+Adverb/4669/3664/5808
 =
-Totals/146350/111223/195817
+Totals/152059/115424/203145
 .TE
 
 .SS Polysemy information
@@ -26,38 +28,37 @@ center box tab(/);
 c | c | c | c
 c | c | c | c
 l | r | r | r.
-\fBPOS\fP/\fBMonosemous Words\fP/\fBPolysemous Words\fP/\fBPolysemous Senses\fP
-/\fBand Senses//\fP
+\fBPOS\fP/\fBMonosemous\fP/\fBPolysemous\fP/\fBPolysemous\fP
+/\fBWords and Senses\fP/\fBWords\fP/\fBSenses\fP
 _
-Noun/94685/14510/40002
-Verb/5920/5168/18221
-Adjective/15981/5479/15175
-Adverb/3820/787/1900
+Noun/99524/15124/42325
+Verb/6256/5050/18522
+Adjective/16103/5333/14979
+Adverb/3901/768/1913
 =
-Totals/120406/25944/75298
+Totals/125784/26275/77739
 .TE
 
-
-
 .TS
-CENTER BOX TAB(/);
+center box tab(/);
 c | c | c
 c | c | c
 l | r | r.
 \fBPOS\fP/\fBAverage Polysemy\fP/\fBAverage Polysemy\fP
 /\fBIncluding Monosemous Words\fP/\fBExcluding Monosemous Words\fP
 _
-Noun/1.23/2.75
-Verb/2.17/3.52
-Adjective/1.45/2.76
-Adverb/1.24/2.41
+Noun/1.23/2.79
+Verb/2.17/3.66
+Adjective/1.44/2.80
+Adverb/1.24/2.49
 .TE
+
 .SH NOTES
 Statistics for all types of adjectives and adjective satellites are
 combined.  
 
 The total of all unique noun, verb, adjective, and adverb strings is
-actually 138587.
+actually 144309.
 However, many strings are unique within a
 syntactic category, but are in more than one syntactic category.  The
 figures in the table represent the unique strings in each syntactic category.

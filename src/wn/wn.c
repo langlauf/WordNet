@@ -11,7 +11,7 @@
 #include "wnhelp.h"
 #include "license.h"
 
-static char *Id = "$Id: wn.c,v 1.8 2002/03/07 17:52:49 wn Rel $";
+static char *Id = "$Id: wn.c,v 1.10 2003/07/15 16:50:53 wn Exp $";
 
 static struct {
     char *option;		/* user's search request */
@@ -24,8 +24,10 @@ static struct {
     { "-antsa", ANTPTR,	ADJ, 1, "Antonyms" },
     { "-perta", PERTPTR, ADJ, 0, "Pertainyms" },
     { "-attra", ATTRIBUTE, ADJ, 2, "Attributes" },
-    { "-famla", FREQ, ADJ, 3, "Familiarity" },
-    { "-grepa", WNGREP, ADJ, 4, "Grep" },
+    { "-domna", CLASSIFICATION, ADJ, 3, "Domain" },
+    { "-domta", CLASS, ADJ, 4, "Domain Terms" },
+    { "-famla", FREQ, ADJ, 5, "Familiarity" },
+    { "-grepa", WNGREP, ADJ, 6, "Grep" },
 
     { "-synsn", HYPERPTR, NOUN, 0, "Synonyms/Hypernyms (Ordered by Estimated Frequency)" },
 #ifdef WN1_6    
@@ -46,10 +48,13 @@ static struct {
     { "-partn", HASPARTPTR, NOUN, 9, "Part Meronyms" },
     { "-membn", HASMEMBERPTR, NOUN, 9, "Member Meronyms" },
     { "-hmern", -HMERONYM, NOUN, 10, "Meronyms" },
-    { "-nomnn", NOMINALIZATIONS, NOUN, 11, "Derived Forms" },
+    { "-nomnn", DERIVATION, NOUN, 11, "Derived Forms" },
+    { "-derin", DERIVATION, NOUN, 11, "Derived Forms" },
+    { "-domnn", CLASSIFICATION, NOUN, 13, "Domain" },
+    { "-domtn", CLASS, NOUN, 14, "Domain Terms" },
     { "-attrn", ATTRIBUTE, NOUN, 12, "Attributes" },
-    { "-famln", FREQ, NOUN, 13, "Familiarity" },
-    { "-grepn", WNGREP, NOUN, 14, "Grep" },
+    { "-famln", FREQ, NOUN, 15, "Familiarity" },
+    { "-grepn", WNGREP, NOUN, 16, "Grep" },
 
     { "-synsv", HYPERPTR, VERB, 0, "Synonyms/Hypernyms (Ordered by Estimated Frequency)" },
     { "-simsv", RELATIVES, VERB, 1, "Synonyms (Grouped by Similarity of Meaning)" },
@@ -61,16 +66,21 @@ static struct {
     { "-tropv", -HYPOPTR, VERB, 5, "Troponyms (hyponyms)" },
     { "-entav", ENTAILPTR, VERB, 6, "Entailment" },
     { "-causv", CAUSETO, VERB, 7, "\'Cause To\'" },
-    { "-nomnv", NOMINALIZATIONS, VERB, 8, "Derived Forms" },
+    { "-nomnv", DERIVATION, VERB, 8, "Derived Forms" },
+    { "-deriv", DERIVATION, VERB, 8, "Derived Forms" },
+    { "-domnv", CLASSIFICATION, VERB, 10, "Domain" },
+    { "-domtv", CLASS, VERB, 11, "Domain Terms" },
     { "-framv", FRAMES, VERB, 9, "Sample Sentences" },
-    { "-famlv", FREQ, VERB, 10, "Familiarity" },
-    { "-grepv", WNGREP, VERB, 11, "Grep" },
+    { "-famlv", FREQ, VERB, 12, "Familiarity" },
+    { "-grepv", WNGREP, VERB, 13, "Grep" },
 
     { "-synsr", SYNS, ADV, 0, "Synonyms" },
     { "-antsr", ANTPTR, ADV, 1, "Antonyms" },
     { "-pertr", PERTPTR, ADV, 0, "Pertainyms" },
-    { "-famlr", FREQ, ADV, 2, "Familiarity" },
-    { "-grepr", WNGREP, ADV, 3, "Grep" },
+    { "-domnr", CLASSIFICATION, ADV, 2, "Domain" },
+    { "-domtr", CLASS, ADV, 3, "Domain Terms" },
+    { "-famlr", FREQ, ADV, 4, "Familiarity" },
+    { "-grepr", WNGREP, ADV, 5, "Grep" },
 
     { "-over", OVERVIEW, ALL_POS, -1, "Overview" },
     { NULL, 0, 0, 0, NULL }
@@ -102,9 +112,9 @@ struct {
     { "-pert%c",	"-pert{a|r}",	"\t\tPertainyms", },
     { "-attr%c",	"-attr{n|a}",	"\t\tAttributes", },
     { NULL, NULL, NULL },	/* verb groups - no specific pointer */
-    { "-nomn%c",        "-nomn{n|v}",   "\t\tDerived Forms",},
-    { NULL, NULL, NULL },	/* CLASSIFICATION - future */
-    { NULL, NULL, NULL },	/* CLASS - future */
+    { "-deri%c",        "-deri{n|v}",   "\t\tDerived Forms",},
+    { "-domn%c", "-domn{n|v|a|r}", "\t\tDomain" },
+    { "-domt%c", "-domt{n|v|a|r}", "\t\tDomain Terms" }, 
     { NULL, NULL, NULL },	/* SYNS - taken care of with SIMPTR */
     { "-faml%c",	"-faml{n|v|a|r}",	"\t\tFamiliarity & Polysemy Count", },
     { "-fram%c",	"-framv\t",	"\t\tVerb Frames", },
@@ -351,6 +361,12 @@ static int error_message(char *msg)
   Revision log: (since version 1.5)
   
   $Log: wn.c,v $
+  Revision 1.10  2003/07/15 16:50:53  wn
+  added domain and domain term searches
+
+  Revision 1.9  2003/07/15 15:53:05  wn
+  updated search numbers
+
   Revision 1.8  2002/03/07 17:52:49  wn
   fixes for 1.7.1
 

@@ -4,7 +4,9 @@
 
 */
 
-/* $Id: license.h,v 1.12 2001/11/27 19:45:33 wn Rel $ */
+/* $Id: license.h,v 1.13 2003/06/05 15:29:17 wn Exp $ */
+
+#ifdef unix
 
 static char *license = "\
 This software and database is being provided to you, the LICENSEE, by  \n\
@@ -20,7 +22,7 @@ and that the same appear on ALL copies of the software, database and  \n\
 documentation, including modifications that you make for internal  \n\
 use or for distribution.  \n\
   \n\
-WordNet 1.7.1 Copyright 2001 by Princeton University.  All rights reserved.  \n\
+WordNet 2.0 Copyright 2003 by Princeton University.  All rights reserved.  \n\
   \n\
 THIS SOFTWARE AND DATABASE IS PROVIDED \"AS IS\" AND PRINCETON  \n\
 UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR  \n\
@@ -37,6 +39,36 @@ and/or database.  Title to copyright in this software, database and  \n\
 any associated documentation shall at all times remain with  \n\
 Princeton University and LICENSEE agrees to preserve same.  \n"
 ;
+#else
+
+static char *license[] = {
+"This software and database is being provided to you, the LICENSEE, by  \n",
+"Princeton University under the following license.  By obtaining, using  \n",
+"and/or copying this software and database, you agree that you have  \n",
+"read, understood, and will comply with these terms and conditions.:  \n  \n",
+"Permission to use, copy, modify and distribute this software and  \n",
+"database and its documentation for any purpose and without fee or  \n",
+"royalty is hereby granted, provided that you agree to comply with  \n",
+"the following copyright notice and statements, including the disclaimer,  \n",
+"and that the same appear on ALL copies of the software, database and  \n",
+"documentation, including modifications that you make for internal  \n",
+"use or for distribution.  \n  \n",
+"WordNet 2.0 Copyright 2003 by Princeton University.  All rights reserved.  \n  \n",
+"THIS SOFTWARE AND DATABASE IS PROVIDED \"AS IS\" AND PRINCETON  \n",
+"UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR  \n",
+"IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PRINCETON  \n",
+"UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES OF MERCHANT-  \n",
+"ABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR THAT THE USE  \n",
+"OF THE LICENSED SOFTWARE, DATABASE OR DOCUMENTATION WILL NOT  \n",
+"INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR  \n",
+"OTHER RIGHTS.  \n  \n",
+"The name of Princeton University or Princeton may not be used in  \n",
+"advertising or publicity pertaining to distribution of the software  \n",
+"and/or database.  Title to copyright in this software, database and  \n",
+"any associated documentation shall at all times remain with  \n",
+"Princeton University and LICENSEE agrees to preserve same.  \n", NULL};
+
+#endif
 
 static char dblicense[] = "\
   1 This software and database is being provided to you, the LICENSEE, by  \n\
@@ -52,7 +84,7 @@ static char dblicense[] = "\
   11 documentation, including modifications that you make for internal  \n\
   12 use or for distribution.  \n\
   13   \n\
-  14 WordNet 1.7.1 Copyright 2001 by Princeton University.  All rights reserved.  \n\
+  14 WordNet 2.0 Copyright 2003 by Princeton University.  All rights reserved.  \n\
   15   \n\
   16 THIS SOFTWARE AND DATABASE IS PROVIDED \"AS IS\" AND PRINCETON  \n\
   17 UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR  \n\
@@ -76,6 +108,9 @@ static char dblicense[] = "\
   Revision log:
 
   $Log: license.h,v $
+  Revision 1.13  2003/06/05 15:29:17  wn
+  updated for 2.0
+
   Revision 1.12  2001/11/27 19:45:33  wn
   updated for 1.7.1
 

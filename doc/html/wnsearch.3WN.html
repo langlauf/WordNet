@@ -208,7 +208,7 @@ a recursive, hierarchical search by setting <I>depth </I> to <B>1 </B> when <B>t
 <TR>  <TR> <TD ALIGN=LEFT>ANTPTR </TD> <TD ALIGN=CENTER>1 </TD> <TD ALIGN=CENTER>! </TD> <TD ALIGN=LEFT>Antonyms </TD> </TR>
  <TR> <TD ALIGN=LEFT>HYPERPTR </TD> <TD ALIGN=CENTER>2 </TD> <TD ALIGN=CENTER>@ </TD> <TD ALIGN=LEFT>Hypernyms </TD> </TR>
  <TR> <TD ALIGN=LEFT>HYPOPTR </TD> <TD ALIGN=CENTER>3 </TD> 
-<TD ALIGN=CENTER>~</TD> <TD ALIGN=LEFT>Hyponyms </TD> </TR>
+<TD ALIGN=CENTER>&nbsp; </TD> <TD ALIGN=LEFT>Hyponyms </TD> </TR>
  <TR> <TD ALIGN=LEFT>ENTAILPTR </TD> <TD ALIGN=CENTER>4 </TD> <TD ALIGN=CENTER>* </TD> <TD ALIGN=LEFT>Entailment </TD> </TR>
  <TR> <TD ALIGN=LEFT>SIMPTR </TD> <TD ALIGN=CENTER>5 </TD> <TD ALIGN=CENTER>&amp; </TD> <TD ALIGN=LEFT>Similar </TD> </TR>
  <TR> 
@@ -232,11 +232,11 @@ holonym </TD> </TR>
 </TD> </TR>
  <TR> <TD ALIGN=LEFT>ATTRIBUTE </TD> <TD ALIGN=CENTER>18 </TD> <TD ALIGN=CENTER>\= </TD> <TD ALIGN=LEFT>Attribute </TD> </TR>
  <TR> <TD ALIGN=LEFT>VERBGROUP </TD> <TD ALIGN=CENTER>19 </TD> <TD ALIGN=CENTER>$ </TD> <TD ALIGN=LEFT>Verb group </TD> </TR>
- <TR> <TD ALIGN=LEFT>RESERVED 
-</TD> <TD ALIGN=CENTER>20 </TD> <TD ALIGN=CENTER>+ </TD> <TD ALIGN=LEFT>Reserved for WordNet 2 </TD> </TR>
- <TR> <TD ALIGN=LEFT>RESERVED </TD> <TD ALIGN=CENTER>21 </TD> <TD ALIGN=CENTER>; </TD> <TD ALIGN=LEFT>Reserved for WordNet 
-2 </TD> </TR>
- <TR> <TD ALIGN=LEFT>RESERVED </TD> <TD ALIGN=CENTER>22 </TD> <TD ALIGN=CENTER>- </TD> <TD ALIGN=LEFT>Reserved for WordNet 2 </TD> </TR>
+ <TR> <TD ALIGN=LEFT>NOMINALIZATIONS 
+</TD> <TD ALIGN=CENTER>20 </TD> <TD ALIGN=CENTER>+ </TD> <TD ALIGN=LEFT>Derivationally related form </TD> </TR>
+ <TR> <TD ALIGN=LEFT>CLASSIFICATION </TD> <TD ALIGN=CENTER>21 </TD> <TD ALIGN=CENTER>; </TD> <TD ALIGN=LEFT>Domain of 
+synset </TD> </TR>
+ <TR> <TD ALIGN=LEFT>CLASS </TD> <TD ALIGN=CENTER>22 </TD> <TD ALIGN=CENTER>- </TD> <TD ALIGN=LEFT>Member of this domain </TD> </TR>
  <TR> <TD ALIGN=LEFT>SYNS </TD> <TD ALIGN=CENTER>23 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Find synonyms 
  </TD> </TR>
  <TR> <TD ALIGN=LEFT>FREQ </TD> <TD ALIGN=CENTER>24 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Polysemy </TD> </TR>
@@ -285,7 +285,7 @@ word has, from the search functions. The <I>searchds </I> field is set by <B>fin
  The <I>pos </I> passed to <B>traceptrs_ds() </B> is not used. <P>
  The <B>WNDBVERSION</B> environment 
 variable indicates the format of the WordNet database files in <B>WNSEARCHDIR 
-</B>.  The default is <B>1.7.1 </B>. <P>
+</B>.  The default is <B>2.0 </B>. <P>
   
 <H2><A NAME="sect6" HREF="#toc6">SEE ALSO </A></H2>
 <B><A HREF="wn.1WN.html">wn</B>(1WN)</A>

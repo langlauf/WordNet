@@ -1,8 +1,8 @@
 SHELL=/bin/sh
 
-# Top level Makefile for WordNet 1.7.1 library and interface code
+# Top level Makefile for WordNet 2.0 library and interface code
 
-WN_ROOT = /usr/local/WordNet-1.7.1
+WN_ROOT = /usr/local/WordNet-2.0
 WN_BINDIR = $(WN_ROOT)/bin
 WN_INCDIR = $(WN_ROOT)/include
 WN_LIBDIR = $(WN_ROOT)/lib

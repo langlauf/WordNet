@@ -1,5 +1,5 @@
 
-		This is the README file for WordNet 1.7.1
+		This is the README file for WordNet 2.0
 
 1. About WordNet
 
@@ -16,11 +16,9 @@ that are interchangeable in some context.  Two kinds of relations are
 recognized: lexical and semantic.  Lexical relations hold between word
 forms; semantic relations hold between word meanings.  
 
-To learn more about WordNet, read "Five Papers on WordNet," available
-via anonymous FTP from our web site and in printed form.  A book,
-"WordNet: An Electronic Lexical Database," containing an updated
-version of "Five Papers on WordNet" and additional papers by WordNet
-users, is available from MIT Press:
+To learn more about WordNet, the book "WordNet: An Electronic Lexical
+Database," containing an updated version of "Five Papers on WordNet"
+and additional papers by WordNet users, is available from MIT Press:
 
     http://mitpress.mit.edu/book-home.tcl?isbn=026206197X
 
@@ -79,18 +77,18 @@ problem, please report it to 'wordnet@princeton.edu'.
 
 4. Current Release
 
-WordNet Version 1.7.1 is the only version available for download at
-this time.  See the file CHANGES for information about changes from
-version 1.6.  Precompiled binaries for the WordNet browsers and
-library are included in the database package for the following
-platforms.
+WordNet Version 2.0 is the latest version available for download.  See
+the file CHANGES for information about changes from version 1.7.1.
+Precompiled binaries for the WordNet browsers and library are included
+in the database package for the following platforms.
 
 (Note that these are the platforms that the binaries were compiled on.
 Most should work on newer versions of the operating system.)
 
-	Sun SPARC Solaris 7        
-	Red Hat Linux 7.1
+	Sun SPARC Solaris 8        
+	Red Hat Linux 7.2
         Windows 2000
+	Windows XP
 	Silicon Graphics Irix 6.5.8
 
 5. WordNet Packages
@@ -103,15 +101,6 @@ as both a single file or a series of smaller files.  If you download a
 package that has been split into smaller files you must make sure that
 you download all of the individual files in the package.
 
-5.1 "Five Papers on WordNet"
-
-The paper "Five Papers on WordNet" is available in several different
-formats:
-
-	5papers.pdf		PDF file
-	5papers.ps		Postscript file
-	5papers.tar.Z		compressed tar file of nroff source
-
 6. Downloading WordNet
 
 	***** IF YOU USE FTP, REMEMBER TO FTP IN "binary" MODE!!! *****
@@ -120,7 +109,7 @@ formats:
 * IF YOU DONWLOAD WordNet, PLEASE SEND MAIL TO wordnet@princeton.edu SO WE *
 * CAN UPDATE OUR RECORDS AND KEEP TRACK OF OUR USERS FOR FUTURE MAILINGS   *
 * AND RELEASES.  EVEN IF YOU ARE A CURRENT USER WHO IS UPGRADING, IT IS    *
-* USEFUL TO US TO KNOW THAT YOU HAVE UPGRADED TO 1.7.1.                    *
+* USEFUL TO US TO KNOW THAT YOU HAVE UPGRADED TO 2.0.                      *
 ****************************************************************************
 
 6.1 Princeton FTP Site
@@ -135,7 +124,7 @@ formats:
 	Host:      ftp.ims.uni-stuttgart.de [141.58.127.61]
 	Login:     ftp
 	Password:  Your e-mail address
-	Directory: /pub/WordNet/1.7.1
+	Directory: /pub/WordNet/2.0
 
 Note: 'ls' sometimes doesn't work properly, 'dir' shows everything.
 

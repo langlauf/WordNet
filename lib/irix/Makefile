@@ -1,8 +1,8 @@
 SHELL=/bin/sh
 
-# Makefile for WordNet 1.7.1 libraries
+# Makefile for WordNet 2.0 libraries
 
-WN_ROOT = /usr/local/WordNet-1.7.1
+WN_ROOT = /usr/local/WordNet-2.0
 WN_INSTALLDIR = $(WN_ROOT)/lib
 
 WN_FILES = libwn.a

@@ -1,6 +1,6 @@
 '\" t
 .\" $Id$
-.TH WNSEARCH 3WN  "December 2001" "WordNet 1.7.1" "WordNet\(tm Library Functions"
+.TH WNSEARCH 3WN  "July 2003" "WordNet 2.0" "WordNet\(tm Library Functions"
 .SH NAME
 findtheinfo, findtheinfo_ds, is_defined, in_wn, index_lookup, parse_index, getindex, read_synset, parse_synset, free_syns, free_synset, free_index, traceptrs_ds, do_trace
 .SH SYNOPSIS
@@ -262,9 +262,9 @@ SEEALSOPTR	16	^	Also see
 PERTPTR	17	\e	Pertains to noun or derived from adjective
 ATTRIBUTE	18	\\=	Attribute
 VERBGROUP	19	$	Verb group
-RESERVED	20	+	Reserved for WordNet 2
-RESERVED	21	;	Reserved for WordNet 2
-RESERVED	22	-	Reserved for WordNet 2
+NOMINALIZATIONS	20	+	Derivationally related form
+CLASSIFICATION	21	;	Domain of synset
+CLASS	22	-	Member of this domain
 SYNS	23	\fIn/a\fP	Find synonyms 
 FREQ	24	\fIn/a\fP	Polysemy
 FRAMES	25	\fIn/a\fP	Verb example sentences and generic frames
@@ -314,7 +314,7 @@ The \fIpos\fP passed to \fBtraceptrs_ds(\|)\fP is not used.
 The
 .B WNDBVERSION
 environment variable indicates the format of the WordNet database
-files in \fBWNSEARCHDIR\fP.  The default is \fB1.7.1\fP.
+files in \fBWNSEARCHDIR\fP.  The default is \fB2.0\fP.
 
 .SH SEE ALSO
 .BR wn (1WN),

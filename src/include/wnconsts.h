@@ -2,7 +2,7 @@
 
    wnconsts.h - constants used by all parts of WordNet system
 
-   $Id: wnconsts.h,v 1.71 2002/03/22 20:19:53 wn Exp $
+   $Id: wnconsts.h,v 1.73 2003/06/05 15:29:17 wn Exp $
 
 */
 
@@ -16,8 +16,8 @@
 
 #ifdef UNIX
 #define DICTDIR         "/dict"
-#define DEFAULTPATH	"/usr/local/WordNet-1.7.1/dict"
-#define DEFAULTBIN      "/usr/local/WordNet-1.7.1/bin"
+#define DEFAULTPATH	"/usr/local/WordNet-2.0/dict"
+#define DEFAULTBIN      "/usr/local/WordNet-2.0/bin"
 #define DATAFILE	"%s/data.%s"
 #define INDEXFILE	"%s/index.%s"
 #define SENSEIDXFILE	"%s/index.sense"
@@ -33,8 +33,8 @@
 #endif
 #ifdef PC
 #define DICTDIR         "\\dict"
-#define DEFAULTPATH	"c:\\WordNet 1.7.1\\dict"
-#define DEFAULTBIN      "c:\\WordNet 1.7.1\\bin"
+#define DEFAULTPATH	"c:\\WordNet 2.0\\dict"
+#define DEFAULTBIN      "c:\\WordNet 2.0\\bin"
 #define DATAFILE	"%s\\%s.dat"
 #define INDEXFILE	"%s\\%s.idx"
 #define SENSEIDXFILE	"%s\\sense.idx"
@@ -105,7 +105,7 @@
 #define PERTPTR		17	/* \ */
 #define ATTRIBUTE	18	/* = */
 #define VERBGROUP	19	/* $ */
-#define NOMINALIZATIONS 20	/* + */
+#define DERIVATION      20	/* + */
 #define CLASSIFICATION  21	/* ; */
 #define CLASS           22	/* - */
 
@@ -125,38 +125,7 @@
 
 #define MAXSEARCH       OVERVIEW
 
-/* Specific nominalization pointers */
-
-#define NOMIN_START     (OVERVIEW + 1)
-
-#define NOMIN_V_ATE     (NOMIN_START)          /* +a */
-#define NOMIN_V_IFY     (NOMIN_START + 1)      /* +b */
-#define NOMIN_V_ISE_IZE (NOMIN_START + 2)      /* +c */
-#define NOMIN_ACY       (NOMIN_START + 3)      /* +d */
-#define NOMIN_AGE       (NOMIN_START + 4)      /* +e */
-#define NOMIN_AL        (NOMIN_START + 5)      /* +f */
-#define NOMIN_ANCE_ENCE (NOMIN_START + 6)      /* +g */
-#define NOMIN_ANCY_ENCY (NOMIN_START + 7)      /* +h */
-#define NOMIN_ANT_ENT   (NOMIN_START + 8)      /* +i */
-#define NOMIN_ARD       (NOMIN_START + 9)      /* +j */
-#define NOMIN_ARY       (NOMIN_START + 10)     /* +k */
-#define NOMIN_ATE       (NOMIN_START + 11)     /* +l */
-#define NOMIN_ATION     (NOMIN_START + 12)     /* +m */
-#define NOMIN_EE        (NOMIN_START + 13)     /* +n */
-#define NOMIN_ER        (NOMIN_START + 14)     /* +o */
-#define NOMIN_ERY_RY    (NOMIN_START + 15)     /* +p */
-#define NOMIN_ING_INGS  (NOMIN_START + 16)     /* +q */
-#define NOMIN_ION       (NOMIN_START + 17)     /* +r */
-#define NOMIN_IST       (NOMIN_START + 18)     /* +s */
-#define NOMIN_MENT      (NOMIN_START + 19)     /* +t */
-#define NOMIN_OR        (NOMIN_START + 20)     /* +u */
-#define NOMIN_URE       (NOMIN_START + 21)     /* +v */
-#define NOMIN_MISC      (NOMIN_START + 22)     /* +w */
-#define NOMIN_UNMARKED  (NOMIN_START + 23)     /* +x */
-
-#define NOMIN_END       NOMIN_UNMARKED
-
-#define CLASSIF_START    (NOMIN_END + 1)
+#define CLASSIF_START    (MAXSEARCH + 1)
 
 #define CLASSIF_CATEGORY (CLASSIF_START)        /* ;c */
 #define CLASSIF_USAGE    (CLASSIF_START + 1)    /* ;u */

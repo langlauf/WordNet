@@ -1,7 +1,7 @@
 '\" t
 .\" $Id$
 .tr ~
-.TH WNINPUT 5WN "December 2001" "WordNet 1.7.1" "WordNet\(tm File Formats"
+.TH WNINPUT 5WN "July 2003" "WordNet 2.0" "WordNet\(tm File Formats"
 .SH NAME
 noun.\fIsuffix\fP, verb.\fIsuffix\fP, adj.\fIsuffix\fP, adv.\fIsuffix\fP \-
 WordNet lexicographer files that are input to 
@@ -60,8 +60,8 @@ word meanings, and therefore pertain to all of the words in the source
 and target synsets.  Lexical pointers represent relations between word
 forms, and pertain only to specific words in the source and target
 synsets.  The following pointer types are usually used to indicate
-lexical relations: Antonym, Pertainym, Participle, Also See.  The
-remaining pointer types are generally used to represent semantic
+lexical relations: Antonym, Pertainym, Participle, Also See, Derivationally
+Related.  The remaining pointer types are generally used to represent semantic
 relations.
 
 A relation from a source to a target synset is formed by specifying
@@ -90,6 +90,13 @@ The \fIpointer_symbol\fPs for nouns are:
 \fB%s\fP	Substance meronym
 \fB%p\fP	Part meronym
 \fB=\fP	Attribute
+\fB+\fP	Derivationally related form		
+\fB;c\fP	Domain of synset - CATEGORY
+\fB-c\fP	Member of this domain - CATEGORY
+\fB;r\fP	Domain of synset - REGION
+\fB-r\fP	Member of this domain - REGION
+\fB;u\fP	Domain of synset - USAGE
+\fB-u\fP	Member of this domain - USAGE
 .RE
 .fi
 
@@ -103,6 +110,10 @@ The \fIpointer_symbol\fPs for verbs are:
 \fB>\fP	Cause
 \fB^\fP	Also see
 \fB$\fP	Verb Group
+\fB+\fP	Derivationally related form		
+\fB;c\fP	Domain of synset - CATEGORY
+\fB;r\fP	Domain of synset - REGION
+\fB;u\fP	Domain of synset - USAGE
 .fi
 .RE
 
@@ -115,6 +126,9 @@ The \fIpointer_symbol\fPs for adjectives are:
 \fB\e\fP	Pertainym (pertains to noun)
 \fB=\fP	Attribute
 \fB^\fP	Also see
+\fB;c\fP	Domain of synset - CATEGORY
+\fB;r\fP	Domain of synset - REGION
+\fB;u\fP	Domain of synset - USAGE
 .fi
 .RE
 
@@ -123,6 +137,9 @@ The \fIpointer_symbol\fPs for adverbs are:
 .nf
 \fB!\fP	Antonym
 \fB\e\fP	Derived from adjective
+\fB;c\fP	Domain of synset - CATEGORY
+\fB;r\fP	Domain of synset - REGION
+\fB;u\fP	Domain of synset - USAGE
 .fi
 .RE
 
@@ -147,6 +164,9 @@ Meronym	Holonym
 Similar to	Similar to
 Attribute	Attribute
 Verb Group	Verb Group
+Derivationally Related	Derivationally Related
+Domain of synset	Member of Doman
+
 .TE
 .SS Verb Frames
 Each verb synset contains a list of generic sentence frames

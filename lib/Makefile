@@ -1,6 +1,6 @@
 SHELL=/bin/sh
 
-# Top level Makefile for WordNet 1.7.1 library
+# Top level Makefile for WordNet 2.0 library
 # Doesn't do much since platform specific version is called from
 # top level installation Makefile
 

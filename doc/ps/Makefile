@@ -1,8 +1,8 @@
 SHELL=/bin/sh
 
-# Makefile for WordNet 1.7.1 manual pages in PostScript format
+# Makefile for WordNet 2.0 manual pages in PostScript format
 
-WN_ROOT = /usr/local/WordNet-1.7.1
+WN_ROOT = /usr/local/WordNet-2.0
 WN_INSTALLDIR = $(WN_ROOT)/doc/ps
 
 all install install-man:

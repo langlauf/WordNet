@@ -20,7 +20,7 @@
 #define EXCFILE	"%s:%s.exc"
 #endif
 
-static char *Id = "$Id: morph.c,v 1.58 2001/08/10 16:34:04 wn Rel $";
+static char *Id = "$Id: morph.c,v 1.61 2003/06/23 16:15:39 wn Exp $";
 
 static char *sufx[] ={ 
     /* Noun suffixes */
@@ -394,7 +394,7 @@ static char *morphprep(char *s)
     strncpy(word, s, rest - s);
     word[rest - s] = '\0';
     for (i = 0, cnt = strlen(word); i < cnt; i++)
-	if (!isalnum(word[i])) return(NULL);
+	if (!isalnum((unsigned char)(word[i]))) return(NULL);
 
     offset = offsets[VERB];
     cnt = cnts[VERB];

@@ -2,7 +2,7 @@
 
    wnglobal.c - global variables used by various WordNet applications
 
-   $Id: wnglobal.c,v 1.50 2002/03/07 18:47:52 wn Rel $
+   $Id: wnglobal.c,v 1.53 2003/04/15 13:54:42 wn Exp $
 
 */
 
@@ -85,9 +85,9 @@ char *ptrtyp[]={
     "\\",			/* 17 PERTPTR */
     "=",			/* 18 ATTRIBUTE */
     "$",			/* 19 VERBGROUP */
-    "",			        /* 20 NOMINALIZATIONS */
-    "",				/* 21 CLASSIFICATION */
-    "",				/* 22 CLASS */
+    "+",		        /* 20 NOMINALIZATIONS */
+    ";",			/* 21 CLASSIFICATION */
+    "-",			/* 22 CLASS */
 /* additional searches, but not pointers.  */
     "",				/* SYNS */
     "",				/* FREQ */
@@ -98,31 +98,6 @@ char *ptrtyp[]={
     "",				/* HHOLONYM */
     "",				/* WNGREP */
     "",				/* OVERVIEW */
-/* Specific nominalization pointers */
-    "+a",			/* NOMIN_V_ATE */
-    "+b",			/* NOMIN_V_IFY */
-    "+c",			/* NOMIN_V_ISE_IZE */
-    "+d",			/* NOMIN_V_ACY */
-    "+e",			/* NOMIN_V_AGE */
-    "+f",			/* NOMIN_V_AL */
-    "+g",			/* NOMIN_V_ANCE_ENCE */
-    "+h",			/* NOMIN_V_ANCY_ENCY */
-    "+i",			/* NOMIN_V_ANT_ENT */
-    "+j",			/* NOMIN_V_ARD */
-    "+k",			/* NOMIN_V_ARY */
-    "+l",			/* NOMIN_V_ATE */
-    "+m",			/* NOMIN_V_ATION */
-    "+n",			/* NOMIN_V_EE */
-    "+o",			/* NOMIN_V_ER */
-    "+p",			/* NOMIN_V_ERY_RY */
-    "+q",			/* NOMIN_V_ING_INGS */
-    "+r",			/* NOMIN_V_ION */
-    "+s",			/* NOMIN_V_IST */
-    "+t",			/* NOMIN_V_MENT */
-    "+u",			/* NOMIN_V_OR */
-    "+v",			/* NOMIN_V_URE */
-    "+w",			/* NOMIN_V_MISC */
-    "+x",			/* NOMIN_V_UNMARKED */
     ";c",			/* CLASSIF_CATEGORY */
     ";u",			/* CLASSIF_USAGE */
     ";r",			/* CLASSIF_REGIONAL */

@@ -1,6 +1,6 @@
 SHELL=/bin/sh
 
-# Makefile for WordNet 1.7.1 manual pages
+# Makefile for WordNet 2.0 manual pages
 
 WN_ROOT = /usr/local/man
 WN_INSTALLDIR = $(WN_ROOT)/man

@@ -1,6 +1,6 @@
 SHELL=/bin/sh
 
-# Makefile for both source and binary distribution of WordNet 1.7.1
+# Makefile for both source and binary distribution of WordNet 2.0
 
 #######################################################################
 #
@@ -40,8 +40,8 @@ PLATFORM = solaris
 
 # The WordNet system must be installed in a directory hierarchy.
 # WN_ROOT is the root of the WordNet installation hierarchy.
-# The default is /usr/local/WordNet-1.7.1.  If you want to install
-# WordNet 1.7.1 in a different directory, change WN_ROOT below.  
+# The default is /usr/local/WordNet-2.0.  If you want to install
+# WordNet 2.0 in a different directory, change WN_ROOT below.  
 # Note that you must have write permissions for the installation path.
 
 # The installation process will create the following subdirectories:
@@ -50,7 +50,7 @@ PLATFORM = solaris
 #
 # 	dict	WordNet database files (the WNSEARCHDIR environment
 #		variable must be set by the user if the database
-#		is NOT installed in /usr/local/WordNet-1.7.1/dict)
+#		is NOT installed in /usr/local/WordNet-2.0/dict)
 #
 #	lib	library of WordNet search code functions (libwn.a)
 #
@@ -62,7 +62,7 @@ PLATFORM = solaris
 
 # Default installation paths
 
-WN_ROOT = /usr/local/WordNet-1.7.1
+WN_ROOT = /usr/local/WordNet-2.0
 
 # By default, precompiled WordNet binaries are installed in 
 # $WN_ROOT/bin.  You may specify another location, such as /usr/local/bin.
@@ -108,7 +108,7 @@ WN_MANDIR = $(WN_ROOT)/man
 WN_DOCDIR = $(WN_ROOT)/doc
 
 ##### Platform specific stuff (for compiling from source only) 
-##### If you are not compiling WordNet 1.7.1, you do not have to change
+##### If you are not compiling WordNet 2.0, you do not have to change
 ##### anything below this line.
 
 # To build WordNet you must use an ANSI C compiler. 'gcc' is freely
@@ -127,7 +127,7 @@ LOCAL_LDFLAGS = -R/usr/openwin/lib:/usr/lib:/usr/local/lib
 
 LOCAL_CFLAGS = -O -DUNIX
 
-# The WordNet browser uses the Tcl/Tk libraries.  WordNet 1.7.1 should
+# The WordNet browser uses the Tcl/Tk libraries.  WordNet 2.0 should
 # work with Tcl/Tk 8.0 and higher.  It was built with version 8.3 on
 # Solaris and Linux and 8.0 on Irix.
 
@@ -190,12 +190,12 @@ all:
 # $(PLATFORM) above.
 
 BinWorld: wnbin wndict wninclude wnlib wnman wndoc
-	@echo "Done installing WordNet 1.7.1 for $(PLATFORM)..."
+	@echo "Done installing WordNet 2.0 for $(PLATFORM)..."
 
 # Target to compile and install WordNet from source code
 
 SrcWorld: clean wnsrc wndict wnman wndoc
-	@echo "Done creating and installing WordNet 1.7.1.."
+	@echo "Done creating and installing WordNet 2.0.."
 
 # After the database is installed and everything has been tested,
 # use this target to clean up from the make and delete the uninstalled 
@@ -208,28 +208,28 @@ CleanWorld: clean cleandbfiles
 # something goes wrong.
 
 wnbin:
-	@echo "Installing WordNet 1.7.1 binaries in $(WN_BINDIR)..."
+	@echo "Installing WordNet 2.0 binaries in $(WN_BINDIR)..."
 	(cd bin/$(PLATFORM); $(MAKE) -k WN_INSTALLDIR='$(WN_BINDIR)' install)
 
 wndict:
-	@echo "Installing WordNet 1.7.1 database in $(WN_DICTDIR)..."
+	@echo "Installing WordNet 2.0 database in $(WN_DICTDIR)..."
 	(cd dict; $(MAKE) -k WN_INSTALLDIR='$(WN_DICTDIR)' INSTALLCMD='$(INSTALLCMD)' INSTALLFLAGS='$(INSTALLFLAGS)' install)
 
 wninclude:
-	@echo "Installing WordNet 1.7.1 header files in $(WN_INCDIR)..."
+	@echo "Installing WordNet 2.0 header files in $(WN_INCDIR)..."
 	(cd include; $(MAKE) -k WN_INSTALLDIR='$(WN_INCDIR)' install)
 
 wnlib:
-	@echo "Installing WordNet 1.7.1 library in $(WN_LIBDIR)..."
+	@echo "Installing WordNet 2.0 library in $(WN_LIBDIR)..."
 	(cd lib/$(PLATFORM); $(MAKE) -k WN_INSTALLDIR='$(WN_LIBDIR)' install)
 	(cd lib/wnres; $(MAKE) -k WN_INSTALLDIR='$(WN_LIBDIR)/wnres' install)
 
 wnman:
-	@echo "Installing WordNet 1.7.1 Reference Manaul in $(WN_MANDIR)..."
+	@echo "Installing WordNet 2.0 Reference Manaul in $(WN_MANDIR)..."
 	(cd man; $(MAKE) -k WN_INSTALLDIR='$(WN_MANDIR)' install)
 
 wndoc:
-	@echo "Installing WordNet 1.7.1 Reference Manual in $(WN_DOCDIR)..."
+	@echo "Installing WordNet 2.0 Reference Manual in $(WN_DOCDIR)..."
 	(cd doc; $(MAKE) -k WN_INSTALLDIR='$(WN_DOCDIR)' install)
 
 wnsrc:

@@ -2,15 +2,6 @@ Processing adj.all...
 Processing adj.pert...
 Processing adv.all...
 Processing noun.Tops...
-noun.Tops, line 7: warning: No hypernyms in synset
-noun.Tops, line 28: warning: No hypernyms in synset
-noun.Tops, line 29: warning: No hypernyms in synset
-noun.Tops, line 38: warning: No hypernyms in synset
-noun.Tops, line 39: warning: No hypernyms in synset
-noun.Tops, line 40: warning: No hypernyms in synset
-noun.Tops, line 41: warning: No hypernyms in synset
-noun.Tops, line 42: warning: No hypernyms in synset
-noun.Tops, line 48: warning: No hypernyms in synset
 Processing noun.act...
 Processing noun.animal...
 Processing noun.artifact...
@@ -55,32 +46,32 @@ Processing adj.ppl...
 
 *** Statistics for ground files:
 
-75804 noun synsets
-13214 verb synsets
-3939 adj synsets
-3629 adv synsets
-3406 pertainym synsets
-11231 adjective satellite synsets
-111223 synsets in total (including satellite and pertainym synsets)
-75804 noun synsets have definitional glosses
-13214 verb synsets have definitional glosses
-3939 adj synsets have definitional glosses
-3629 adv synsets have definitional glosses
-3406 pertainym synsets have definitional glosses
-11231 adjective satellite synsets have definitional glosses
-111223 definitional glosses in total (including adjective satellite synsets)
-153780 pointers in total
-195817 synonyms in synsets
-138587 unique word phrases
-78720 word phrases of length 1
-51409 word phrases of length 2
-6963 word phrases of length 3
-1188 word phrases of length 4
-229 word phrases of length 5
-54 word phrases of length 6
-13 word phrases of length 7
-9 word phrases of length 8
-2 word phrases of length 9
+79689 noun synsets
+13508 verb synsets
+3910 adj synsets
+3664 adv synsets
+3572 pertainym synsets
+11081 adjective satellite synsets
+115424 synsets in total (including satellite and pertainym synsets)
+79689 noun synsets have definitional glosses
+13508 verb synsets have definitional glosses
+3910 adj synsets have definitional glosses
+3664 adv synsets have definitional glosses
+3572 pertainym synsets have definitional glosses
+11081 adjective satellite synsets have definitional glosses
+115424 definitional glosses in total (including adjective satellite synsets)
+210397 pointers in total
+203147 synonyms in synsets
+144308 unique word phrases
+81243 word phrases of length 1
+53633 word phrases of length 2
+7593 word phrases of length 3
+1420 word phrases of length 4
+287 word phrases of length 5
+76 word phrases of length 6
+27 word phrases of length 7
+20 word phrases of length 8
+9 word phrases of length 9
 
 Resolving pointers...
 Done resolving pointers...
