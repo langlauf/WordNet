@@ -38,8 +38,8 @@ synptr); </B> <P>
 idx); </B> <P>
 <B>SynsetPtr traceptrs_ds(SynsetPtr synptr, int ptr_type, int pos, 
 int depth); </B> <P>
-<B>SynsetPtr do_trace(SynsetPtr synptr, int ptr_type, int pos, 
-int depth); </B>  
+<B>char *do_trace(SynsetPtr synptr, int ptr_type, int pos, int 
+depth); </B>  
 <H2><A NAME="sect2" HREF="#toc2">DESCRIPTION </A></H2>
 <P>
 These functions are used for searching the WordNet 
@@ -197,95 +197,103 @@ code, and reading <B><A HREF="wndb.5WN.html">wndb</B>(5WN)<B></B></A>
  are the best ways to see what types of searches 
 are available and the data returned for each. <P>
  Listed below are the valid 
-searches (found in <B>WNHOME/include/wnconsts.h </B>) that can be passed as <I>ptr_type 
-</I> to <B>findtheinfo() </B>.  Passing a negative value (when applicable) causes 
-a recursive, hierarchical search by setting <I>depth </I> to <B>1 </B> when <B>traceptrs() 
-</B> is called. <P>
+searches that can be passed as <I>ptr_type </I> to <B>findtheinfo() </B>.  Passing a 
+negative value (when applicable) causes a recursive, hierarchical search 
+by setting <I>depth </I> to <B>1 </B> when <B>traceptrs() </B> is called. <P>
    <TABLE BORDER=0>
- <TR> <TD ALIGN=LEFT><B>ptr_type </B> </TD> <TD ALIGN=CENTER><B>Value </B> </TD> <TD ALIGN=CENTER><B>Pointer </B> </TD> <TD ALIGN=LEFT><B>Search </B> </TD> </TR>
+ <TR> <TD ALIGN=LEFT><B>ptr_type </B> </TD> <TD ALIGN=CENTER><B>Value 
+</B> </TD> <TD ALIGN=CENTER><B>Pointer </B> </TD> <TD ALIGN=LEFT><B>Search </B> </TD> </TR>
  <TR> <TD ALIGN=LEFT> </TD> <TD ALIGN=CENTER> </TD> <TD ALIGN=CENTER><B>Symbol </B> </TD> </TR>
- 
-<TR>  <TR> <TD ALIGN=LEFT>ANTPTR </TD> <TD ALIGN=CENTER>1 </TD> <TD ALIGN=CENTER>! </TD> <TD ALIGN=LEFT>Antonyms </TD> </TR>
- <TR> <TD ALIGN=LEFT>HYPERPTR </TD> <TD ALIGN=CENTER>2 </TD> <TD ALIGN=CENTER>@ </TD> <TD ALIGN=LEFT>Hypernyms </TD> </TR>
- <TR> <TD ALIGN=LEFT>HYPOPTR </TD> <TD ALIGN=CENTER>3 </TD> 
-<TD ALIGN=CENTER>&nbsp; </TD> <TD ALIGN=LEFT>Hyponyms </TD> </TR>
- <TR> <TD ALIGN=LEFT>ENTAILPTR </TD> <TD ALIGN=CENTER>4 </TD> <TD ALIGN=CENTER>* </TD> <TD ALIGN=LEFT>Entailment </TD> </TR>
+ <TR>  <TR> <TD ALIGN=LEFT>ANTPTR </TD> <TD ALIGN=CENTER>1 </TD> <TD ALIGN=CENTER>! </TD> <TD ALIGN=LEFT>Antonyms </TD> </TR>
+ <TR> <TD ALIGN=LEFT>HYPERPTR 
+</TD> <TD ALIGN=CENTER>2 </TD> <TD ALIGN=CENTER>@ </TD> <TD ALIGN=LEFT>Hypernyms </TD> </TR>
+ <TR> <TD ALIGN=LEFT>HYPOPTR </TD> <TD ALIGN=CENTER>3 </TD> <TD ALIGN=CENTER>~ </TD> <TD ALIGN=LEFT>Hyponyms </TD> </TR>
+ <TR> <TD ALIGN=LEFT>ENTAILPTR </TD> <TD ALIGN=CENTER>4 </TD> <TD ALIGN=CENTER>* </TD> <TD ALIGN=LEFT>Entailment 
+</TD> </TR>
  <TR> <TD ALIGN=LEFT>SIMPTR </TD> <TD ALIGN=CENTER>5 </TD> <TD ALIGN=CENTER>&amp; </TD> <TD ALIGN=LEFT>Similar </TD> </TR>
- <TR> 
-<TD ALIGN=LEFT>ISMEMBERPTR </TD> <TD ALIGN=CENTER>6 </TD> <TD ALIGN=CENTER>#m </TD> <TD ALIGN=LEFT>Member meronym </TD> </TR>
- <TR> <TD ALIGN=LEFT>ISSTUFFPTR </TD> <TD ALIGN=CENTER>7 </TD> <TD ALIGN=CENTER>#s </TD> <TD ALIGN=LEFT>Substance meronym 
-</TD> </TR>
+ <TR> <TD ALIGN=LEFT>ISMEMBERPTR </TD> <TD ALIGN=CENTER>6 </TD> <TD ALIGN=CENTER>#m </TD> <TD ALIGN=LEFT>Member meronym </TD> </TR>
+ <TR> <TD ALIGN=LEFT>ISSTUFFPTR 
+</TD> <TD ALIGN=CENTER>7 </TD> <TD ALIGN=CENTER>#s </TD> <TD ALIGN=LEFT>Substance meronym </TD> </TR>
  <TR> <TD ALIGN=LEFT>ISPARTPTR </TD> <TD ALIGN=CENTER>8 </TD> <TD ALIGN=CENTER>#p </TD> <TD ALIGN=LEFT>Part meronym </TD> </TR>
- <TR> <TD ALIGN=LEFT>HASMEMBERPTR </TD> <TD ALIGN=CENTER>9 </TD> <TD ALIGN=CENTER>%m </TD> <TD ALIGN=LEFT>Member holonym 
-</TD> </TR>
+ <TR> <TD ALIGN=LEFT>HASMEMBERPTR 
+</TD> <TD ALIGN=CENTER>9 </TD> <TD ALIGN=CENTER>%m </TD> <TD ALIGN=LEFT>Member holonym </TD> </TR>
  <TR> <TD ALIGN=LEFT>HASSTUFFPTR </TD> <TD ALIGN=CENTER>10 </TD> <TD ALIGN=CENTER>%s </TD> <TD ALIGN=LEFT>Substance holonym </TD> </TR>
- <TR> <TD ALIGN=LEFT>HASPARTPTR </TD> <TD ALIGN=CENTER>11 </TD> <TD ALIGN=CENTER>%p </TD> <TD ALIGN=LEFT>Part 
-holonym </TD> </TR>
+ <TR> <TD ALIGN=LEFT>HASPARTPTR 
+</TD> <TD ALIGN=CENTER>11 </TD> <TD ALIGN=CENTER>%p </TD> <TD ALIGN=LEFT>Part holonym </TD> </TR>
  <TR> <TD ALIGN=LEFT>MERONYM </TD> <TD ALIGN=CENTER>12 </TD> <TD ALIGN=CENTER>% </TD> <TD ALIGN=LEFT>All meronyms </TD> </TR>
- <TR> <TD ALIGN=LEFT>HOLONYM </TD> <TD ALIGN=CENTER>13 </TD> <TD ALIGN=CENTER># </TD> <TD ALIGN=LEFT>All holonyms 
-</TD> </TR>
+ <TR> <TD ALIGN=LEFT>HOLONYM </TD> <TD ALIGN=CENTER>13 </TD> 
+<TD ALIGN=CENTER># </TD> <TD ALIGN=LEFT>All holonyms </TD> </TR>
  <TR> <TD ALIGN=LEFT>CAUSETO </TD> <TD ALIGN=CENTER>14 </TD> <TD ALIGN=CENTER>&gt; </TD> <TD ALIGN=LEFT>Cause </TD> </TR>
- <TR> <TD ALIGN=LEFT>PPLPTR </TD> <TD ALIGN=CENTER>15 </TD> <TD ALIGN=CENTER>&lt; </TD> <TD ALIGN=LEFT>Participle of verb </TD> </TR>
- <TR> <TD ALIGN=LEFT>SEEALSOPTR 
-</TD> <TD ALIGN=CENTER>16 </TD> <TD ALIGN=CENTER>^ </TD> <TD ALIGN=LEFT>Also see </TD> </TR>
- <TR> <TD ALIGN=LEFT>PERTPTR </TD> <TD ALIGN=CENTER>17 </TD> <TD ALIGN=CENTER>\ </TD> <TD ALIGN=LEFT>Pertains to noun or derived from adjective 
-</TD> </TR>
+ <TR> <TD ALIGN=LEFT>PPLPTR </TD> <TD ALIGN=CENTER>15 </TD> <TD ALIGN=CENTER>&lt; </TD> <TD ALIGN=LEFT>Participle of 
+verb </TD> </TR>
+ <TR> <TD ALIGN=LEFT>SEEALSOPTR </TD> <TD ALIGN=CENTER>16 </TD> <TD ALIGN=CENTER>^ </TD> <TD ALIGN=LEFT>Also see </TD> </TR>
+ <TR> <TD ALIGN=LEFT>PERTPTR </TD> <TD ALIGN=CENTER>17 </TD> <TD ALIGN=CENTER>\ </TD> <TD ALIGN=LEFT>Pertains to noun 
+or derived from adjective </TD> </TR>
  <TR> <TD ALIGN=LEFT>ATTRIBUTE </TD> <TD ALIGN=CENTER>18 </TD> <TD ALIGN=CENTER>\= </TD> <TD ALIGN=LEFT>Attribute </TD> </TR>
- <TR> <TD ALIGN=LEFT>VERBGROUP </TD> <TD ALIGN=CENTER>19 </TD> <TD ALIGN=CENTER>$ </TD> <TD ALIGN=LEFT>Verb group </TD> </TR>
- <TR> <TD ALIGN=LEFT>NOMINALIZATIONS 
-</TD> <TD ALIGN=CENTER>20 </TD> <TD ALIGN=CENTER>+ </TD> <TD ALIGN=LEFT>Derivationally related form </TD> </TR>
- <TR> <TD ALIGN=LEFT>CLASSIFICATION </TD> <TD ALIGN=CENTER>21 </TD> <TD ALIGN=CENTER>; </TD> <TD ALIGN=LEFT>Domain of 
-synset </TD> </TR>
- <TR> <TD ALIGN=LEFT>CLASS </TD> <TD ALIGN=CENTER>22 </TD> <TD ALIGN=CENTER>- </TD> <TD ALIGN=LEFT>Member of this domain </TD> </TR>
- <TR> <TD ALIGN=LEFT>SYNS </TD> <TD ALIGN=CENTER>23 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Find synonyms 
- </TD> </TR>
- <TR> <TD ALIGN=LEFT>FREQ </TD> <TD ALIGN=CENTER>24 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Polysemy </TD> </TR>
- <TR> <TD ALIGN=LEFT>FRAMES </TD> <TD ALIGN=CENTER>25 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Verb example sentences 
-and generic frames </TD> </TR>
- <TR> <TD ALIGN=LEFT>COORDS </TD> <TD ALIGN=CENTER>26 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Noun coordinates </TD> </TR>
- <TR> <TD ALIGN=LEFT>RELATIVES 
-</TD> <TD ALIGN=CENTER>27 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Group related senses </TD> </TR>
- <TR> <TD ALIGN=LEFT>HMERONYM </TD> <TD ALIGN=CENTER>28 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Hierarchical meronym 
-search </TD> </TR>
- <TR> <TD ALIGN=LEFT>HHOLONYM </TD> <TD ALIGN=CENTER>29 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Hierarchical holonym search </TD> </TR>
- <TR> <TD ALIGN=LEFT>WNGREP </TD> <TD ALIGN=CENTER>30 
-</TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Find keywords by substring </TD> </TR>
- <TR> <TD ALIGN=LEFT>OVERVIEW </TD> <TD ALIGN=CENTER>31 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Show all synsets 
-for word </TD> </TR>
+ <TR> <TD ALIGN=LEFT>VERBGROUP 
+</TD> <TD ALIGN=CENTER>19 </TD> <TD ALIGN=CENTER>$ </TD> <TD ALIGN=LEFT>Verb group </TD> </TR>
+ <TR> <TD ALIGN=LEFT>DERIVATION </TD> <TD ALIGN=CENTER>20 </TD> <TD ALIGN=CENTER>+ </TD> <TD ALIGN=LEFT>Derivationally related form </TD> 
+</TR>
+ <TR> <TD ALIGN=LEFT>CLASSIFICATION </TD> <TD ALIGN=CENTER>21 </TD> <TD ALIGN=CENTER>; </TD> <TD ALIGN=LEFT>Domain of synset </TD> </TR>
+ <TR> <TD ALIGN=LEFT>CLASS </TD> <TD ALIGN=CENTER>22 </TD> <TD ALIGN=CENTER>- </TD> <TD ALIGN=LEFT>Member of this 
+domain </TD> </TR>
+ <TR> <TD ALIGN=LEFT>SYNS </TD> <TD ALIGN=CENTER>23 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Find synonyms  </TD> </TR>
+ <TR> <TD ALIGN=LEFT>FREQ </TD> <TD ALIGN=CENTER>24 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Polysemy </TD> 
+</TR>
+ <TR> <TD ALIGN=LEFT>FRAMES </TD> <TD ALIGN=CENTER>25 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Verb example sentences and generic frames </TD> </TR>
+ <TR> <TD ALIGN=LEFT>COORDS 
+</TD> <TD ALIGN=CENTER>26 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Noun coordinates </TD> </TR>
+ <TR> <TD ALIGN=LEFT>RELATIVES </TD> <TD ALIGN=CENTER>27 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Group related senses 
+</TD> </TR>
+ <TR> <TD ALIGN=LEFT>HMERONYM </TD> <TD ALIGN=CENTER>28 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Hierarchical meronym search </TD> </TR>
+ <TR> <TD ALIGN=LEFT>HHOLONYM </TD> <TD ALIGN=CENTER>29 </TD> <TD ALIGN=CENTER><I>n/a 
+</I> </TD> <TD ALIGN=LEFT>Hierarchical holonym search </TD> </TR>
+ <TR> <TD ALIGN=LEFT>WNGREP </TD> <TD ALIGN=CENTER>30 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Find keywords by substring 
+</TD> </TR>
+ <TR> <TD ALIGN=LEFT>OVERVIEW </TD> <TD ALIGN=CENTER>31 </TD> <TD ALIGN=CENTER><I>n/a </I> </TD> <TD ALIGN=LEFT>Show all synsets for word </TD> </TR>
+ <TR> <TD ALIGN=LEFT>CLASSIF_CATEGORY </TD> 
+<TD ALIGN=CENTER>32 </TD> <TD ALIGN=CENTER>;c </TD> <TD ALIGN=LEFT>Show domain topic </TD> </TR>
+ <TR> <TD ALIGN=LEFT>CLASSIF_USAGE </TD> <TD ALIGN=CENTER>33 </TD> <TD ALIGN=CENTER>;u </TD> <TD ALIGN=LEFT>Show domain usage 
+</TD> </TR>
+ <TR> <TD ALIGN=LEFT>CLASSIF_REGIONAL </TD> <TD ALIGN=CENTER>34 </TD> <TD ALIGN=CENTER>;r </TD> <TD ALIGN=LEFT>Show domain region </TD> </TR>
+ <TR> <TD ALIGN=LEFT>CLASS_CATEGORY </TD> <TD ALIGN=CENTER>35 
+</TD> <TD ALIGN=CENTER>-c </TD> <TD ALIGN=LEFT>Show domain terms for topic </TD> </TR>
+ <TR> <TD ALIGN=LEFT>CLASS_USAGE </TD> <TD ALIGN=CENTER>36 </TD> <TD ALIGN=CENTER>-u </TD> <TD ALIGN=LEFT>Show domain terms 
+for usage </TD> </TR>
+ <TR> <TD ALIGN=LEFT>CLASS_REGIONAL </TD> <TD ALIGN=CENTER>37 </TD> <TD ALIGN=CENTER>-r </TD> <TD ALIGN=LEFT>Show domain terms for region </TD> </TR>
+ <TR> <TD ALIGN=LEFT>INSTANCE 
+</TD> <TD ALIGN=CENTER>38 </TD> <TD ALIGN=CENTER>@i </TD> <TD ALIGN=LEFT>Instance of </TD> </TR>
+ <TR> <TD ALIGN=LEFT>INSTANCES </TD> <TD ALIGN=CENTER>39 </TD> <TD ALIGN=CENTER>&nbsp;~i </TD> <TD ALIGN=LEFT>Show instances </TD> </TR>
  </TABLE>
 <P>
- <B>findtheinfo_ds() </B> cannot perform the following searches: <P>
- 
- <blockquote>SEEALSOPTR <BR>
+ <B>findtheinfo_ds() 
+</B> cannot perform the following searches: <P>
+  <blockquote>SEEALSOPTR <BR>
  PERTPTR <BR>
- VERBGROUP <BR>
+ VERBGROUP 
+<BR>
  FREQ <BR>
  FRAMES <BR>
  RELATIVES <BR>
  WNGREP <BR>
- OVERVIEW 
-<BR>
+ OVERVIEW <BR>
   </blockquote>
  
 <H2><A NAME="sect5" HREF="#toc5">NOTES </A></H2>
-Applications that use WordNet and/or the morphological functions 
-must call <B>wninit() </B> at the start of the program.  See <B><A HREF="wnutil.3WN.html">wnutil</B>(3WN)</A>
- for more 
-information. <P>
- In all function calls, <I>searchstr </I> may be either a word or 
-a collocation formed by joining individual words with underscore characters 
-(<B>_ </B>). <P>
- <B>$WNHOME/include/wntypes.h </B> describes the <B>Synset </B>, <B>Index </B> and <B>SearchResults 
-</B> data structures. <P>
- The <B>SearchResults </B> structure defines fields in the <I>wnresults 
-</I> global variable that are set by the various search functions.  This is 
-a way to get additional information, such as the number of senses the 
-word has, from the search functions. The <I>searchds </I> field is set by <B>findtheinfo_ds() 
-</B>. <P>
- The <I>pos </I> passed to <B>traceptrs_ds() </B> is not used. <P>
- The <B>WNDBVERSION</B> environment 
-variable indicates the format of the WordNet database files in <B>WNSEARCHDIR 
-</B>.  The default is <B>2.0 </B>. <P>
+Applications that 
+use WordNet and/or the morphological functions must call <B>wninit() </B> at 
+the start of the program.  See <B><A HREF="wnutil.3WN.html">wnutil</B>(3WN)</A>
+ for more information. <P>
+ In all 
+function calls, <I>searchstr </I> may be either a word or a collocation formed 
+by joining individual words with underscore characters (<B>_ </B>). <P>
+ The <B>SearchResults 
+</B> structure defines fields in the <I>wnresults </I> global variable that are set 
+by the various search functions.  This is a way to get additional information, 
+such as the number of senses the word has, from the search functions. The 
+<I>searchds </I> field is set by <B>findtheinfo_ds() </B>. <P>
+ The <I>pos </I> passed to <B>traceptrs_ds() 
+</B> is not used. <P>
   
 <H2><A NAME="sect6" HREF="#toc6">SEE ALSO </A></H2>
 <B><A HREF="wn.1WN.html">wn</B>(1WN)</A>

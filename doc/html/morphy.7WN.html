@@ -79,23 +79,22 @@ the resulting string.  No rules are applicable to adverbs. <P>
  <TR> <TD ALIGN=LEFT>ADJ </TD> <TD ALIGN=LEFT>"er" </TD> <TD ALIGN=LEFT>"e" </TD> </TR>
  <TR> <TD ALIGN=LEFT>ADJ </TD> <TD ALIGN=LEFT>"est" </TD> <TD ALIGN=LEFT>"e" </TD> </TR>
  </TABLE>
-<P>
-  
-<H3><A NAME="sect3" HREF="#toc3">Exception Lists </A></H3>
-There is 
-one exception list file for each syntactic category.  The exception lists 
-contain the morphological transformations for strings that are not regular 
-and therefore cannot be processed in an algorithmic manner.  Each line 
-of an exception list contains an inflected form of a word or collocation, 
-followed by one or more base forms.  The list is kept in alphabetical order 
-and a binary search is used to find words in these lists.  See <B><A HREF="wndb.5WN.html">wndb</B>(5WN)</A>
  
-for information on the format of the exception list files.  
-<H3><A NAME="sect4" HREF="#toc4">Single Words 
-</A></H3>
-In general, single words are relatively easy to process.  Morphy first 
-looks for the word in the exception list.  If it is found the first base 
-form is returned.  Subsequent calls with a <FONT SIZE=-1><B>NULL </B></FONT>
+<H3><A NAME="sect3" HREF="#toc3">Exception Lists </A></H3>
+There is one 
+exception list file for each syntactic category.  The exception lists contain 
+the morphological transformations for strings that are not regular and 
+therefore cannot be processed in an algorithmic manner.  Each line of an 
+exception list contains an inflected form of a word or collocation, followed 
+by one or more base forms.  The list is kept in alphabetical order and 
+a binary search is used to find words in these lists.  See <B><A HREF="wndb.5WN.html">wndb</B>(5WN)</A>
+ for 
+information on the format of the exception list files.  
+<H3><A NAME="sect4" HREF="#toc4">Single Words </A></H3>
+In 
+general, single words are relatively easy to process.  Morphy first looks 
+for the word in the exception list.  If it is found the first base form 
+is returned.  Subsequent calls with a <FONT SIZE=-1><B>NULL </B></FONT>
   argument return additional 
 base forms, if present.  A <FONT SIZE=-1><B>NULL </B></FONT>
   is returned when there are no more base 
@@ -143,41 +142,59 @@ them if an exact match is not found.  A search for an abbreviation like
 and collocated string is searched for properly, so it may be advantageous 
 to specify several search strings if the results of a search attempt seem 
 incomplete.  
-<H2><A NAME="sect7" HREF="#toc7">BUGS </A></H2>
-Since many noun collocations contains prepositions, such 
-as <B>line&nbsp;of&nbsp;products </B>, an algorithm similar to that used for verbs should 
-be written for nouns.  In the present scheme, if Morphy is passed <B>lines&nbsp;of&nbsp;products 
-</B>, the search string becomes <B>line&nbsp;of&nbsp;product </B>, which is not in WordNet 
- 
-<H2><A NAME="sect8" HREF="#toc8">ENVIRONMENT VARIABLES </A></H2>
+<H3><A NAME="sect7" HREF="#toc7">Special Processing for nouns ending with 'ful' </A></H3>
+Morphy contains 
+code that searches for nouns ending with <B>ful </B> and performs a transformation 
+on the substring preceeding it.  It then appends 'ful' back onto the resulting 
+string and returns it. For example, if passed the nouns <B>boxesful </B>, it will 
+return <B>boxful </B>.  
+<H2><A NAME="sect8" HREF="#toc8">BUGS </A></H2>
+Since many noun collocations contains prepositions, 
+such as <B>line&nbsp;of&nbsp;products </B>, an algorithm similar to that used for verbs 
+should be written for nouns.  In the present scheme, if Morphy is passed 
+<B>lines&nbsp;of&nbsp;products </B>, the search string becomes <B>line&nbsp;of&nbsp;product </B>, which 
+is not in WordNet <P>
+ Morphy will allow non-words to be converted to words, 
+if they follow one of the rules described above.  For example, it will 
+happily convert <B>plantes </B> to <B>plants </B>.  
+<H2><A NAME="sect9" HREF="#toc9">ENVIRONMENT VARIABLES (UNIX) </A></H2>
 
 <DL>
 
-<DT><B>WNHOME</B>  </DT>
-<DD>Base directory for WordNet.  Unix default 
-is  <B>/usr/local/WordNet-2.0 </B>, Windows default is <B>C:\Program&nbsp;Files\WordNet\2.0 
-</B>. </DD>
+<DT><B>WNHOME</B> 
+ </DT>
+<DD>Base directory for WordNet.  Default is <B>/usr/local/WordNet-2.1 </B>. </DD>
 
-<DT><B>WNSEARCHDIR</B>  </DT>
-<DD>Directory in which the WordNet database has been installed. 
- Unix default is <B>WNHOME/dict </B>, Windows default is <B>WNHOME\dict </B>. </DD>
+<DT><B>WNSEARCHDIR</B> 
+ </DT>
+<DD>Directory in which the WordNet database has been installed.   Default 
+is <B>WNHOME/dict </B>. </DD>
 </DL>
  
-<H2><A NAME="sect9" HREF="#toc9">FILES </A></H2>
-In 
-directory <B>WNSEARCHDIR </B>: 
+<H2><A NAME="sect10" HREF="#toc10">REGISTRY (WINDOWS) </A></H2>
+
+<DL>
+
+<DT><B>HKEY_LOCAL_MACHINE\SOFTWARE\WordNet\2.1\WNHome</B> 
+ </DT>
+<DD>Base directory for WordNet.  Default is <B>C:\Program&nbsp;Files\WordNet\2.1 </B>. </DD>
+</DL>
+ 
+<H2><A NAME="sect11" HREF="#toc11">FILES 
+</A></H2>
+
 <DL>
 
 <DT><B><I>pos </I>.exc</B>  </DT>
 <DD>morphology exception lists </DD>
 </DL>
  
-<H2><A NAME="sect10" HREF="#toc10">SEE ALSO 
-</A></H2>
+<H2><A NAME="sect12" HREF="#toc12">SEE ALSO </A></H2>
 <B><A HREF="wn.1WN.html">wn</B>(1WN)</A>
 , <B><A HREF="wnb.1WN.html">wnb</B>(1WN)</A>
 , <B><A HREF="binsrch.3WN.html">binsrch</B>(3WN)</A>
-, <B><A HREF="morph.3WN.html">morph</B>(3WN)</A>
+, 
+<B><A HREF="morph.3WN.html">morph</B>(3WN)</A>
 , <B><A HREF="wndb.5WN.html">wndb</B>(5WN)</A>
 , <B><A HREF="wninput.7WN.html">wninput</B>(7WN)</A>
 . <P>
@@ -193,10 +210,12 @@ directory <B>WNSEARCHDIR </B>:
 <LI><A NAME="toc4" HREF="#sect4">Single Words</A></LI>
 <LI><A NAME="toc5" HREF="#sect5">Collocations</A></LI>
 <LI><A NAME="toc6" HREF="#sect6">Hyphenation</A></LI>
+<LI><A NAME="toc7" HREF="#sect7">Special Processing for nouns ending with 'ful'</A></LI>
 </UL>
-<LI><A NAME="toc7" HREF="#sect7">BUGS</A></LI>
-<LI><A NAME="toc8" HREF="#sect8">ENVIRONMENT VARIABLES</A></LI>
-<LI><A NAME="toc9" HREF="#sect9">FILES</A></LI>
-<LI><A NAME="toc10" HREF="#sect10">SEE ALSO</A></LI>
+<LI><A NAME="toc8" HREF="#sect8">BUGS</A></LI>
+<LI><A NAME="toc9" HREF="#sect9">ENVIRONMENT VARIABLES (UNIX)</A></LI>
+<LI><A NAME="toc10" HREF="#sect10">REGISTRY (WINDOWS)</A></LI>
+<LI><A NAME="toc11" HREF="#sect11">FILES</A></LI>
+<LI><A NAME="toc12" HREF="#sect12">SEE ALSO</A></LI>
 </UL>
 </BODY></HTML>

@@ -121,49 +121,46 @@ synset type is encoded as follows: <P>
 <H2><A NAME="sect5" HREF="#toc5">NOTES </A></H2>
 For non-satellite senses the <I>head_word 
 </I> and <I>head_id </I> fields have no values, however the field separator character 
-(<B>: </B>) is present.  <P>
- The sense index is a very large file (6.1MB), and is 
-not used by the WordNet searching software.  It can be useful to many other 
-applications that the user may wish to write, and is therefore included 
-in the WordNet package.  If  <B><A HREF="escort.1WN.html">escort</B>(1WN)</A>
- and the semantic concordance are 
-not being used, and you are not doing research or development that requires 
-this file, the sense index file can be deleted from the <B>WNSEARCHDIR </B> directory 
-in order to save disk space.  
-<H2><A NAME="sect6" HREF="#toc6">ENVIRONMENT VARIABLES </A></H2>
+(<B>: </B>) is present.   
+<H2><A NAME="sect6" HREF="#toc6">ENVIRONMENT VARIABLES (UNIX) </A></H2>
 
 <DL>
 
 <DT><B>WNHOME</B>  </DT>
 <DD>Base directory 
-for WordNet.  Unix default is <B>/usr/local/WordNet-2.0 </B>, Windows default is 
-<B>C:\Program&nbsp;Files\WordNet\2.0 </B>. </DD>
+for WordNet.  Default is <B>/usr/local/WordNet-2.1 </B>. </DD>
 
 <DT><B>WNSEARCHDIR</B>  </DT>
-<DD>Directory in which the WordNet 
-database has been installed.  Unix default is <B>WNHOME/dict </B>, Windows default 
-is <B>WNHOME\dict </B>. </DD>
+<DD>Directory in 
+which the WordNet database has been installed.   Default is <B>WNHOME/dict 
+</B>. </DD>
 </DL>
  
-<H2><A NAME="sect7" HREF="#toc7">FILES </A></H2>
-In directory <B>WNSEARCHDIR </B>: 
+<H2><A NAME="sect7" HREF="#toc7">REGISTRY (WINDOWS) </A></H2>
+
+<DL>
+
+<DT><B>HKEY_LOCAL_MACHINE\SOFTWARE\WordNet\2.1\WNHome</B>  </DT>
+<DD>Base directory 
+for WordNet.  Default is <B>C:\Program&nbsp;Files\WordNet\2.1 </B>. </DD>
+</DL>
+ 
+<H2><A NAME="sect8" HREF="#toc8">FILES </A></H2>
+
 <DL>
 
 <DT><B>index.sense</B>  </DT>
-<DD>sense index 
-(Unix) </DD>
-
-<DT><B>sense.idx</B>  </DT>
-<DD>sense index (Windows) </DD>
+<DD>sense 
+index </DD>
 </DL>
  
-<H2><A NAME="sect8" HREF="#toc8">SEE ALSO </A></H2>
+<H2><A NAME="sect9" HREF="#toc9">SEE ALSO </A></H2>
 <B><A HREF="binsrch.3WN.html">binsrch</B>(3WN)</A>
 , <B><A HREF="wnsearch.3WN.html">wnsearch</B>(3WN)</A>
-, 
-<B><A HREF="lexnames.5WN.html">lexnames</B>(5WN)</A>
+, <B><A HREF="lexnames.5WN.html">lexnames</B>(5WN)</A>
 , <B><A HREF="wnintro.5WN.html">wnintro</B>(5WN)</A>
-, <B><A HREF="sensemap.5WN.html">sensemap</B>(5WN)</A>
+, 
+<B><A HREF="sensemap.5WN.html">sensemap</B>(5WN)</A>
 , <B><A HREF="wndb.5WN.html">wndb</B>(5WN)</A>
 , <B><A HREF="wninput.5WN.html">wninput</B>(5WN)</A>
 . <P>
@@ -179,8 +176,9 @@ In directory <B>WNSEARCHDIR </B>:
 <LI><A NAME="toc4" HREF="#sect4">Synset Type</A></LI>
 </UL>
 <LI><A NAME="toc5" HREF="#sect5">NOTES</A></LI>
-<LI><A NAME="toc6" HREF="#sect6">ENVIRONMENT VARIABLES</A></LI>
-<LI><A NAME="toc7" HREF="#sect7">FILES</A></LI>
-<LI><A NAME="toc8" HREF="#sect8">SEE ALSO</A></LI>
+<LI><A NAME="toc6" HREF="#sect6">ENVIRONMENT VARIABLES (UNIX)</A></LI>
+<LI><A NAME="toc7" HREF="#sect7">REGISTRY (WINDOWS)</A></LI>
+<LI><A NAME="toc8" HREF="#sect8">FILES</A></LI>
+<LI><A NAME="toc9" HREF="#sect9">SEE ALSO</A></LI>
 </UL>
 </BODY></HTML>

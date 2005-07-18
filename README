@@ -1,5 +1,5 @@
 
-		This is the README file for WordNet 2.0
+		This is the README file for WordNet 2.1
 
 1. About WordNet
 
@@ -22,15 +22,20 @@ and additional papers by WordNet users, is available from MIT Press:
 
     http://mitpress.mit.edu/book-home.tcl?isbn=026206197X
 
+2. The WordNet Web Site
+
+We maintain a Web site at:
+
+http://wordnet.princeton.edu
+
 Information about WordNet, access to our online interface, and the
 various WordNet packages that you can download are available from our
 web site.  All of the software documentation is available online, as
 well as a FAQ.  On this site we also have information about other
-applications that use WordNet.
+applications that use WordNet. If you have an application that you
+would like included, please send e-mail to the above address.
 
-    http://www.cogsci.princeton.edu/~wn/
-
-2. Contacting Us
+3. Contacting Us
 
 Ongoing deveopment work and WordNet related projects are done by a
 small group of researchers, lexicographers, and systems programmers.
@@ -39,113 +44,58 @@ confine correspondence to WordNet topics only.  Please check the
 documentation, FAQ, and other resources for the answer to your
 question or problem before contacting us.
 
+If you have trouble installing or downloading WordNet, have a bug to
+report, or any other problem, please refer to the online FAQ file
+first.  If you can heal thyself, please do so.  The FAQ will be
+updated over time.  And if you do find a previously unreported
+problem, please use our Bug Report Form:
+
+http://wordnet.princeton.edu/cgi-bin/bugsubmit.pl
+
 When reporting a problem, please be as specific as possible, stating
 the computer platform you are using, which interface you are using,
 and the exact error.  The more details you can provide, the more
 likely it is that you will get an answer. 
 
-Please address all e-mail concerning WordNet to 'wordnet@princeton.edu'.
+There is a WordNet user discussion group mailing list that we invite
+our users to join.  Users use this list to ask questions of one
+another, announce extensions to WordNet that they've developed, and
+other topics of general usefulness to the user community.
 
-We maintain a database of "registered" WordNet users.  We use this
-database to send mail to users when necessary (such as announcing a
-new release), and also to help keep track of the number of users we
-have, which in turn helps us with important items such as funding.  If
-you download WordNet, you are encouraged to send e-mail to the address
-above, stating which platform you're using and which package(s) you've
-downloaded. 
+Information on joining the user discussion list, reporting bugs and other
+contact information is in found on our website at:
 
-In addition to the user database, there is a WordNet user discussion
-group mailing list.  Information on joining the user mailing list
-is in the file README.list.
-
-3. The WordNet Web Site
-
-We maintain a Web site at http://www.cogsci.princeton.edu/~wn/
-
-From this site users can download WordNet, run a web interface to
-WordNet, and download "Five Papers on WordNet."  We also maintain
-links to other related projects and online interfaces to WordNet, and
-an extensive (but by no means complete) bibliography.  If you have an
-application or paper that you would like included, please send e-mail
-to the above address.
-
-If you have trouble installing or downloading WordNet, have a bug to
-report, or any other problem, please refer to the online FAQ file
-first.  If you can heal thyself, please do so.  The FAQ will be
-updated over time.  And if you do find a previously unreported
-problem, please report it to 'wordnet@princeton.edu'.
+http://wordnet.princeton.edu/contact
 
 4. Current Release
 
-WordNet Version 2.0 is the latest version available for download.  See
-the file CHANGES for information about changes from version 1.7.1.
-Precompiled binaries for the WordNet browsers and library are included
-in the database package for the following platforms.
+WordNet Version 2.1 is the latest version available for download.  Two
+basic database packages are available - one for Windows and one for
+Unix platforms (including Mac OS X).  See the file ChangeLog (Unix) or
+CHANGES.txt (Windows) for a list of changes from version 2.0.
 
-(Note that these are the platforms that the binaries were compiled on.
-Most should work on newer versions of the operating system.)
+WordNet packages can either be downloaded from our web site via:
 
-	Sun SPARC Solaris 8        
-	Red Hat Linux 7.2
-        Windows 2000
-	Windows XP
-	Silicon Graphics Irix 6.5.8
+http://wordnet.princeton.edu/obtain
 
-5. WordNet Packages
+The Windows package is a self-extracting archive that installs itself
+when you double-click on it.
 
-WordNet packages can either be downloaded from our web site, or via
-anonymous FTP.  The "Download WordNet" link describes each package.
+With Version 2.1, we have changed the Unix package to a GNU Autotools
+package.  The WordNet browser makes use of the open source Tcl and Tk
+packages. Many systems come with either or both pre-installed.  If
+your system doesn't (some systems have Tcl installed, but not Tk)
+Tcl/Tk can be downloaded from:
 
-In order to facilitate downloading, some of the packages are available
-as both a single file or a series of smaller files.  If you download a
-package that has been split into smaller files you must make sure that
-you download all of the individual files in the package.
+http://www.tcl.tk/ 
 
-6. Downloading WordNet
+Tcl and Tk must be installed BEFORE you compile WordNet. You must also
+have a C compiler before installing Tcl/Tk or WordNet.  WordNet has
+been built and tested with the GNU gcc compiler.  This is
+pre-installed on most Unix systems, and can be downloaded from:
 
-	***** IF YOU USE FTP, REMEMBER TO FTP IN "binary" MODE!!! *****
+http://gcc.gnu.org/
 
-****************************************************************************
-* IF YOU DONWLOAD WordNet, PLEASE SEND MAIL TO wordnet@princeton.edu SO WE *
-* CAN UPDATE OUR RECORDS AND KEEP TRACK OF OUR USERS FOR FUTURE MAILINGS   *
-* AND RELEASES.  EVEN IF YOU ARE A CURRENT USER WHO IS UPGRADING, IT IS    *
-* USEFUL TO US TO KNOW THAT YOU HAVE UPGRADED TO 2.0.                      *
-****************************************************************************
+See the file INSTALL for detailed WordNet installation instructions.
 
-6.1 Princeton FTP Site
 
-	Host:      ftp.cogsci.princeton.edu [128.112.144.11]
-	Login:     ftp
-	Password:  Your e-mail address
-	Directory: pub/wordnet
-
-6.2 Stuttgart Mirror FTP Site
-
-	Host:      ftp.ims.uni-stuttgart.de [141.58.127.61]
-	Login:     ftp
-	Password:  Your e-mail address
-	Directory: /pub/WordNet/2.0
-
-Note: 'ls' sometimes doesn't work properly, 'dir' shows everything.
-
-Due to the size of the WordNet distribution, please restrict
-downloading to time frames outside office hours (i.e. outside 9am -
-6pm EST).
-
-All queries regarding the installation of the system, its use and
-maintenance should be made to wordnet@princeton.edu only.
-
-7. Installing WordNet Packages
-
-WordNet packages are generally very easy to install.  See the UNBUNDLE
-file (on the FTP site and on the web site under "Download WordNet")
-for instructions on unbundling downloaded packages.  Once unbundled,
-each package contains an INSTALL file with package-specific
-installation and compilation instructions.
-
-8. Bugs
-
-Before reporting download or installation problems, or bugs, please
-check the FAQ and BUGS files on our web site to see if your situation is
-already addressed there.  If not, then report WordNet related
-problems to 'wordnet@princeton.edu'.

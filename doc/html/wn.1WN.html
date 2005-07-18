@@ -246,124 +246,126 @@ category, and each synset is annotated as described above with <I>synset_offset
  The overview search also indicates how many of the senses in each syntactic 
 category are represented in the tagged texts.  This is a way for the user 
 to determine whether a sense's sense number is based on semantic tagging 
-data, or was randomly assigned.   For each sense that has appeared in such 
-texts, the number of semantic tags to that sense are indicated in parentheses 
-after the sense number. <P>
- If a search cannot be performed on some senses 
-of <I>searchstr </I>, the search results are headed by a string of the form: 
-<tt> </tt>&nbsp;<tt> </tt>&nbsp;X of Y senses of <I>searchstr </I> <BR>
+data, or was arbitrarily assigned.   For each sense that has appeared in 
+such texts, the number of semantic tags to that sense are indicated in 
+parentheses after the sense number. <P>
+ If a search cannot be performed on 
+some senses of <I>searchstr </I>, the search results are headed by a string of 
+the form: <tt> </tt>&nbsp;<tt> </tt>&nbsp;X of Y senses of <I>searchstr </I> <BR>
  <P>
- The output of the <B>-deri </B> search shows word 
-forms that are morphologically related to <B>searchstr </B>. Each word form pointed 
-to from <I>searchstr </I> is displayed, preceded by <B>RELATED TO-&gt; </B> and the syntactic 
-category of the link, followed, on the next line, by its synset.  Printed 
-after the word form is <B># </B><I>n </I> where <I>n </I> indicates the WordNet sense number 
-of the term pointed to. <P>
- The <B>-domn </B> and <B>-domt </B> searches show the domain that 
-a synset has been classified in and, conversely, all of the terms that 
-have been assigned to a specific domain.  A domain is either a <B>CATEGORY, 
-</B> <B>REGION </B> or <B>USAGE, </B> as reflected in the specific pointer character stored 
-in the database, and displayed in the output.  A <B>-domn </B> search on a term 
-shows the domain, if any, that each synset containing <I>searchstr </I> has been 
-classified in.  The output display shows the domain type (<B>CATEGORY, </B> <B>REGION 
-</B> or <B>USAGE </B>), followed by the syntactic category of the domain synset and 
-the terms in the synset.  Each term is followed by <B># </B><I>n </I> where <I>n </I> indicates 
-the WordNet sense number of the term.  The converse search, <B>-domt </B>, shows 
-all of the synsets that have been placed into the domain <I>searchstr </I>, with 
-analogous markers.  <P>
- When <B>-framv </B> is specified, sample illustrative sentences 
-and generic sentence frames are displayed.  If a sample sentence is found, 
-the base form of <I>search </I> is substituted into the sentence, and it is printed 
-below the synset, preceded with the <B>EX: </B> marker.  When no sample sentences 
-are found, the generic sentence frames are displayed.  Sentence frames 
-that are acceptable for all words in a synset are preceded by the marker 
-<B>*&gt; </B>.  If a frame is acceptable for the search word only, it is preceded 
-by the marker <B>=&gt; </B>. <P>
- Search results for adjectives are slightly different 
-from those for other parts of speech.  When an adjective is printed, its 
-direct antonym, if it has one, is also printed in parentheses.  When <I>searchstr 
-</I> is in a head synset, all of the head synset's satellites are also displayed. 
- The position of an adjective in relation to the noun may be restricted 
-to the <I>prenominal </I>, <I>postnominal </I> or <I>predicative </I> position.  Where present, 
-these restrictions are noted in parentheses. <P>
- When an adjective is a participle 
-of a verb, the output indicates the verb and displays its synset. <P>
- When 
-an adverb is derived from an adjective, the specific adjectival sense 
-on which it is based is indicated. <P>
- The morphological transformations performed 
-by the search code may result in more than one word to search for.  WordNet 
-automatically performs the requested search on all of the strings and 
-returns the results grouped by word.  For example, the verb <B>saw </B> is both 
-the present tense of <B>saw </B> and the past tense of <B>see </B>.  When passed <I>searchstr 
-</I> <B>saw </B>, WordNet performs the desired search first on <B>saw </B> and next on <B>see 
-</B>, returning the list of <B>saw </B> senses and search results, followed by those 
-for <B>see </B>.  </blockquote>
+ The output of the <B>-deri </B> search 
+shows word forms that are morphologically related to <B>searchstr </B>. Each word 
+form pointed to from <I>searchstr </I> is displayed, preceded by <B>RELATED TO-&gt; </B> 
+and the syntactic category of the link, followed, on the next line, by 
+its synset.  Printed after the word form is <B># </B><I>n </I> where <I>n </I> indicates the 
+WordNet sense number of the term pointed to. <P>
+ The <B>-domn </B> and <B>-domt </B> searches 
+show the domain that a synset has been classified in and, conversely, 
+all of the terms that have been assigned to a specific domain.  A domain 
+is either a <B>TOPIC, </B> <B>REGION </B> or <B>USAGE, </B> as reflected in the specific pointer 
+character stored in the database, and displayed in the output.  A <B>-domn 
+</B> search on a term shows the domain, if any, that each synset containing 
+<I>searchstr </I> has been classified in.  The output display shows the domain 
+type (<B>TOPIC, </B> <B>REGION </B> or <B>USAGE </B>), followed by the syntactic category of 
+the domain synset and the terms in the synset.  Each term is followed by 
+<B># </B><I>n </I> where <I>n </I> indicates the WordNet sense number of the term.  The converse 
+search, <B>-domt </B>, shows all of the synsets that have been placed into the 
+domain <I>searchstr </I>, with analogous markers.  <P>
+ When <B>-framv </B> is specified, 
+sample illustrative sentences and generic sentence frames are displayed. 
+ If a sample sentence is found, the base form of <I>search </I> is substituted 
+into the sentence, and it is printed below the synset, preceded with the 
+<B>EX: </B> marker.  When no sample sentences are found, the generic sentence 
+frames are displayed.  Sentence frames that are acceptable for all words 
+in a synset are preceded by the marker <B>*&gt; </B>.  If a frame is acceptable for 
+the search word only, it is preceded by the marker <B>=&gt; </B>. <P>
+ Search results 
+for adjectives are slightly different from those for other parts of speech. 
+ When an adjective is printed, its direct antonym, if it has one, is also 
+printed in parentheses.  When <I>searchstr </I> is in a head synset, all of the 
+head synset's satellites are also displayed.  The position of an adjective 
+in relation to the noun may be restricted to the <I>prenominal </I>, <I>postnominal 
+</I> or <I>predicative </I> position.  Where present, these restrictions are noted 
+in parentheses. <P>
+ When an adjective is a participle of a verb, the output 
+indicates the verb and displays its synset. <P>
+ When an adverb is derived 
+from an adjective, the specific adjectival sense on which it is based 
+is indicated. <P>
+ The morphological transformations performed by the search 
+code may result in more than one word to search for.  WordNet automatically 
+performs the requested search on all of the strings and returns the results 
+grouped by word.  For example, the verb <B>saw </B> is both the present tense 
+of <B>saw </B> and the past tense of <B>see </B>.  When passed <I>searchstr </I> <B>saw </B>, WordNet 
+performs the desired search first on <B>saw </B> and next on <B>see </B>, returning 
+the list of <B>saw </B> senses and search results, followed by those for <B>see 
+</B>.  </blockquote>
  
 <H2><A NAME="sect6" HREF="#toc6">EXIT STATUS </A></H2>
-<B>wn() </B> normally exits with the number of senses 
-displayed.  If <I>searchword </I> is not found in WordNet, it exits with <B>0 </B>. <P>
- If 
-the WordNet database cannot be opened, an error messages is displayed 
-and <B>wn() </B> exits with <B>-1 </B>.  
-<H2><A NAME="sect7" HREF="#toc7">ENVIRONMENT VARIABLES </A></H2>
+<B>wn() </B> normally exits with the number of senses displayed. 
+ If <I>searchword </I> is not found in WordNet, it exits with <B>0 </B>. <P>
+ If the WordNet 
+database cannot be opened, an error messages is displayed and <B>wn() </B> exits 
+with <B>-1 </B>.  
+<H2><A NAME="sect7" HREF="#toc7">ENVIRONMENT VARIABLES (UNIX) </A></H2>
 
 <DL>
 
 <DT><B>WNHOME</B>  </DT>
-<DD>Base directory 
-for WordNet.  Unix default is  <B>/usr/local/WordNet-2.0 </B>, Windows default is 
-<B>C:\Program&nbsp;Files\WordNet\2.0 </B>. </DD>
+<DD>Base directory for WordNet. 
+ Default is <B>/usr/local/WordNet-2.1 </B>. </DD>
 
 <DT><B>WNSEARCHDIR</B>  </DT>
-<DD>Directory in which the WordNet 
-database has been installed.  Unix default is <B>WNHOME/dict </B>, Windows default 
-is <B>WNHOME\dict </B>. </DD>
+<DD>Directory in which the 
+WordNet database has been installed.   Default is <B>WNHOME/dict </B>. </DD>
 </DL>
  
-<H2><A NAME="sect8" HREF="#toc8">FILES </A></H2>
-All files are in the directory <B>WNSEARCHDIR </B>. 
+<H2><A NAME="sect8" HREF="#toc8">REGISTRY 
+(WINDOWS) </A></H2>
+
 <DL>
 
-<DT><B>index.<I>pos 
-</I></B>  </DT>
-<DD>database index files (Unix) </DD>
-
-<DT><B><I>pos </I>.idx</B>  </DT>
-<DD>database index files (Windows) 
-</DD>
-
-<DT><B>data.<I>pos </I></B>  </DT>
-<DD>database data files (Unix) </DD>
-
-<DT><B><I>pos </I>.dat</B>  </DT>
-<DD>database data files (Windows) 
-</DD>
-
-<DT><B>*.vrb</B>  </DT>
-<DD>files of sentences illustrating the use of verbs </DD>
-
-<DT><B><I>pos </I>.exc</B>  </DT>
-<DD>morphology 
-exception lists </DD>
+<DT><B>HKEY_LOCAL_MACHINE\SOFTWARE\WordNet\2.1\WNHome</B>  </DT>
+<DD>Base directory for 
+WordNet.  Default is <B>C:\Program&nbsp;Files\WordNet\2.1 </B>. </DD>
 </DL>
  
-<H2><A NAME="sect9" HREF="#toc9">SEE ALSO </A></H2>
+<H2><A NAME="sect9" HREF="#toc9">FILES </A></H2>
+
+<DL>
+
+<DT><B>index.<I>pos </I></B>  </DT>
+<DD>database 
+index files </DD>
+
+<DT><B>data.<I>pos </I></B>  </DT>
+<DD>database data files </DD>
+
+<DT><B>*.vrb</B>  </DT>
+<DD>files of sentences illustrating 
+the use of verbs </DD>
+
+<DT><B><I>pos </I>.exc</B>  </DT>
+<DD>morphology exception lists </DD>
+</DL>
+ 
+<H2><A NAME="sect10" HREF="#toc10">SEE ALSO </A></H2>
 <B><A HREF="wnintro.1WN.html">wnintro</B>(1WN)</A>
-, <B><A HREF="wnb.1WN.html">wnb</B>(1WN)</A>
+, 
+<B><A HREF="wnb.1WN.html">wnb</B>(1WN)</A>
 , <B><A HREF="wnintro.3WN.html">wnintro</B>(3WN)</A>
 , <B><A HREF="lexnames.5WN.html">lexnames</B>(5WN)</A>
-, 
-<B><A HREF="senseidx.5WN.html">senseidx</B>(5WN)</A>
+, <B><A HREF="senseidx.5WN.html">senseidx</B>(5WN)</A>
  <B><A HREF="wndb.5WN.html">wndb</B>(5WN)</A>
 ,<B></B> <B><A HREF="wninput.5WN.html">wninput</B>(5WN)</A>
-, <B><A HREF="morphy.7WN.html">morphy</B>(7WN)</A>
+, 
+<B><A HREF="morphy.7WN.html">morphy</B>(7WN)</A>
 , <B><A HREF="wngloss.7WN.html">wngloss</B>(7WN)</A>
 , <B><A HREF="wngroups.7WN.html">wngroups</B>(7WN)</A>
-. 
- 
-<H2><A NAME="sect10" HREF="#toc10">BUGS </A></H2>
-Please report bugs to wordnet@princeton.edu. <P>
+.  
+<H2><A NAME="sect11" HREF="#toc11">BUGS </A></H2>
+Please report bugs to wordnet@princeton.edu. 
+<P>
 
 <HR><P>
 <A NAME="toc"><B>Table of Contents</B></A><P>
@@ -377,9 +379,10 @@ Please report bugs to wordnet@princeton.edu. <P>
 </UL>
 <LI><A NAME="toc5" HREF="#sect5">SEARCH RESULTS</A></LI>
 <LI><A NAME="toc6" HREF="#sect6">EXIT STATUS</A></LI>
-<LI><A NAME="toc7" HREF="#sect7">ENVIRONMENT VARIABLES</A></LI>
-<LI><A NAME="toc8" HREF="#sect8">FILES</A></LI>
-<LI><A NAME="toc9" HREF="#sect9">SEE ALSO</A></LI>
-<LI><A NAME="toc10" HREF="#sect10">BUGS</A></LI>
+<LI><A NAME="toc7" HREF="#sect7">ENVIRONMENT VARIABLES (UNIX)</A></LI>
+<LI><A NAME="toc8" HREF="#sect8">REGISTRY (WINDOWS)</A></LI>
+<LI><A NAME="toc9" HREF="#sect9">FILES</A></LI>
+<LI><A NAME="toc10" HREF="#sect10">SEE ALSO</A></LI>
+<LI><A NAME="toc11" HREF="#sect11">BUGS</A></LI>
 </UL>
 </BODY></HTML>

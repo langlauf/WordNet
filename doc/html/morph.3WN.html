@@ -38,14 +38,23 @@ form found.  Subsequent calls requesting base forms of the same string
 must be made with the first argument of <FONT SIZE=-1><B>NULL. </B></FONT>
   When no more base forms 
 for <I>origstr </I> can be found, <FONT SIZE=-1><B>NULL </B></FONT>
-  is returned. <P>
-<B>morphword()</B> tries to find 
-the base form of <I>word </I> in the specified <I>pos </I>. This function is called by 
-<B>morphstr()</B> for each individual word in a collocation.  
-<H2><A NAME="sect3" HREF="#toc3">NOTES </A></H2>
-<B>morphinit()</B> 
-is called by  <B>wninit() </B> and is not intended to be called directly by an 
-application. Applications wishing to use WordNet and/or the morphological 
+  is returned.  Note that <B>morphstr() </B> returns 
+a pointer to a static character buffer.  A subsequent call to <B>morphstr() 
+</B> with a new string (instead of <B>NULL </B>) will overwrite the string pointed 
+to by a previous call.  Users should copy the returned string into a local 
+buffer, or use the C library function <B>strdup </B> to duplicate the returned 
+string into a <I>malloc'd </I> buffer. <P>
+<B>morphword()</B> tries to find the base form 
+of <I>word </I> in the specified <I>pos </I>. This function is called by <B>morphstr()</B> for 
+each individual word in a collocation. Note that <B>morphword() </B> returns a 
+pointer to a static character buffer.  A subsequent call to <B>morphword() 
+</B>  will overwrite the string pointed to by a previous call.  Users should 
+copy the returned string into a local buffer, or use the C library function 
+<B>strdup </B> to duplicate the returned string into a <I>malloc'd </I> buffer.  
+<H2><A NAME="sect3" HREF="#toc3">NOTES 
+</A></H2>
+<B>morphinit()</B> is called by  <B>wninit() </B> and is not intended to be called directly 
+by an application. Applications wishing to use WordNet and/or the morphological 
 functions must call <B>wninit() </B> at the start of the program.  See <B><A HREF="wnutil.3WN.html">wnutil</B>(3WN)</A>
  
 for more information. <P>
@@ -80,6 +89,11 @@ Passing an invalid part of speech will
 result in a core dump. <P>
  The WordNet database files must be open to use 
 <B>morphstr() </B> or <B>morphword().  <P>
+  </B>
+<H2><A NAME="sect6" HREF="#toc6">BUGS </A></H2>
+Morphy will allow non-words to be converted 
+to words, if they follow one of the rules described above.  For example, 
+it will happily convert <B>plantes </B> to <B>plants </B>. <P>
 
 <HR><P>
 <A NAME="toc"><B>Table of Contents</B></A><P>
@@ -90,5 +104,6 @@ result in a core dump. <P>
 <LI><A NAME="toc3" HREF="#sect3">NOTES</A></LI>
 <LI><A NAME="toc4" HREF="#sect4">SEE ALSO</A></LI>
 <LI><A NAME="toc5" HREF="#sect5">WARNINGS</A></LI>
+<LI><A NAME="toc6" HREF="#sect6">BUGS</A></LI>
 </UL>
 </BODY></HTML>
