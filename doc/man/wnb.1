@@ -1,7 +1,7 @@
 '\" t
 .\" $Id$
 .tr ~
-.TH WNB 1WN "Jan 2005" "WordNet 2.1" "WordNet\(tm User Commands"
+.TH WNB 1WN "Dec 2006" "WordNet 3.0" "WordNet\(tm User Commands"
 .SH NAME
 wnb \- WordNet window-based browser interface 
 .SH SYNOPSIS
@@ -350,7 +350,7 @@ estimate based on usage in a small corpus.
 
 Verb senses can be grouped by similarity of meaning, rather
 than ordered by frequency of use.  When the \fB"Synonyms, grouped by
-similarity of meaning"\fP search is selected, senses that are close
+similarity"\fP search is selected, senses that are close
 in meaning are printed together, with a line of dashes indicating the
 end of a group.  See
 .BR wngroups (7WN)
@@ -367,7 +367,7 @@ indicates the WordNet sense number of the term pointed to.
 The \fB"Domain"\fP and \fB"Domain Terms"\fP searches show the domain that a
 synset has been classified in and, conversely, all of the terms that
 have been assigned to a specific domain.  A domain is
-either a \fBTOPIC,\fP \fBREGION\fI or \fBUSAGE,\fP as reflected in
+either a \fBTOPIC,\fP \fBREGION\fP or \fBUSAGE,\fP as reflected in
 the specific pointer character stored in the database, and displayed
 in the output.  A \fBDomain\fP search on a term shows the domain, if
 any, that each synset containing \fIsearchstr\fP has been classified
@@ -375,7 +375,7 @@ in.  The output display shows the domain type (\fBTOPIC,\fP
 \fBREGION\fP or \fBUSAGE\fP), followed by the syntactic category of
 the domain synset and the terms in the synset.  Each term is followed
 by \fB#\fP\fIn\fP where \fIn\fP indicates the WordNet sense number of
-the term.  The converse search, \fBDomain TermsfP, shows all of the synsets
+the term.  The converse search, \fBDomain Terms\fP, shows all of the synsets
 that have been placed into the domain \fIsearchstr\fP, with analogous
 markers. 
 
@@ -420,18 +420,18 @@ database for your installation.
 .TP 20
 .B WNHOME
 Base directory for WordNet.  Default is
-\fB/usr/local/WordNet-2.1\fP.
+\fB/usr/local/WordNet-3.0\fP.
 .TP 20
 .B WNSEARCHDIR
 Directory in which the WordNet database has been installed.  
 Default is \fBWNHOME/dict\fP.
 .SH REGISTRY (WINDOWS)
 .TP 20
-.B HKEY_LOCAL_MACHINE\eSOFTWARE\eWordNet\e2.1\eWNHome
+.B HKEY_LOCAL_MACHINE\eSOFTWARE\eWordNet\e3.0\eWNHome
 Base directory for WordNet.  Default is
-\fBC:\eProgram~Files\eWordNet\e2.1\fP.
+\fBC:\eProgram~Files\eWordNet\e3.0\fP.
 .TP 20
-.B HKEY_CURRENT_USER\eSOFTWARE\eWordNet\e2.1\ewnres
+.B HKEY_CURRENT_USER\eSOFTWARE\eWordNet\e3.0\ewnres
 User's default browser options.
 .SH FILES
 .TP 20

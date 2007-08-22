@@ -107,6 +107,7 @@ VERSION = @VERSION@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_RANLIB = @ac_ct_RANLIB@
 ac_ct_STRIP = @ac_ct_STRIP@
+ac_prefix = @ac_prefix@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
 am__include = @am__include@

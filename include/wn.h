@@ -2,13 +2,9 @@
    
    wn.h - header file needed to use WordNet Run Time Library
 
-   $Id: wn.h,v 1.60 2005/03/02 16:36:39 wn Exp $
+   $Id: wn.h,v 1.61 2006/11/14 20:58:30 wn Exp $
 
 */
-
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
 
 #ifndef _WN_
 #define _WN_
@@ -19,7 +15,9 @@
 
 #ifdef _WINDOWS
 #define DICTDIR         "\\dict"
-#define DEFAULTPATH	"C:\\Program Files\\WordNet\\2.1\\dict"
+#ifndef DEFAULTPATH
+#define DEFAULTPATH	"C:\\Program Files\\WordNet\\3.0\\dict"
+#endif
 #define DATAFILE	"%s\\data.%s"
 #define INDEXFILE	"%s\\index.%s"
 #define SENSEIDXFILE	"%s\\index.sense"
@@ -30,7 +28,9 @@
 #define CNTLISTFILE     "%s\\cntlist.rev"
 #else
 #define DICTDIR         "/dict"
-#define DEFAULTPATH	"/usr/local/WordNet-2.1/dict"
+#ifndef DEFAULTPATH
+#define DEFAULTPATH	"/usr/local/WordNet-3.0/dict"
+#endif
 #define DATAFILE	"%s/data.%s"
 #define INDEXFILE	"%s/index.%s"
 #define SENSEIDXFILE	"%s/index.sense"
@@ -468,7 +468,7 @@ and that the same appear on ALL copies of the software, database and  \n\
 documentation, including modifications that you make for internal  \n\
 use or for distribution.  \n\
   \n\
-WordNet 2.1 Copyright 2005 by Princeton University.  All rights reserved.  \n\
+WordNet 3.0 Copyright 2006 by Princeton University.  All rights reserved.  \n\
   \n\
 THIS SOFTWARE AND DATABASE IS PROVIDED \"AS IS\" AND PRINCETON  \n\
 UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR  \n\
@@ -500,7 +500,7 @@ static char dblicense[] = "\
   11 documentation, including modifications that you make for internal  \n\
   12 use or for distribution.  \n\
   13   \n\
-  14 WordNet 2.1 Copyright 2005 by Princeton University.  All rights reserved.  \n\
+  14 WordNet 3.0 Copyright 2006 by Princeton University.  All rights reserved.  \n\
   15   \n\
   16 THIS SOFTWARE AND DATABASE IS PROVIDED \"AS IS\" AND PRINCETON  \n\
   17 UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR  \n\

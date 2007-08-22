@@ -1,11 +1,11 @@
 
-		WordNet 2.1 Installation Instructions
+		WordNet 3.0 Installation Instructions
 
-With Version 2.1, we have changed the Unix package to a GNU Autotools
-package.  With Autotools, a system independent installation process
-builds and installs WordNet on your specific platform.  Read both the
-`Basic Installation' and `WordNet Installation' sections below before
-attempting to build and install WordNet.
+Beginning with Version 2.1, we have changed the Unix package to a GNU
+Autotools package.  With Autotools, a system independent installation
+process builds and installs WordNet on your specific platform.  Read
+both the `Basic Installation' and `WordNet Installation' sections
+below before attempting to build and install WordNet.
 
 See the `Running WordNet' section for important information concerning
 environment variables and the commands to run WordNet.
@@ -17,7 +17,15 @@ Tcl/Tk can be downloaded from:
 
 Linux - http://www.tcl.tk/ 
 
-OS X - http://tcltkaqua.sourceforge.net/
+OS X - http://tcltkaqua.sourceforge.net/ (note that 10.4 comes with
+Tcl/Tk preinstalled, but earlier versions may not)
+
+Some Linux systems come with the Tcl/Tk libraries installed, but not
+all the header files. If your build fails due to missing Tk headers, a
+subset that may be sufficient on your system can be found in the
+"include/tk" directory. Copy the header files to the "include" directory
+and try the make again.  If it fails, you should download and install
+a full copy of Tcl and/or Tk from the site above.
 
 Tcl and Tk must be installed BEFORE you build and install WordNet. You
 must also have a C compiler before installing Tcl/Tk or WordNet.
@@ -241,7 +249,7 @@ operates.
 WordNet Installation
 ====================
 
-By default, WordNet is installed in `/usr/local/WordNet-2.1'.  You
+By default, WordNet is installed in `/usr/local/WordNet-3.0'.  You
 must usually be the `root' user to install something here.  If you
 choose to install WordNet in a different location, you must use the
 `--prefix=' option to `configure' and specify an installation
@@ -275,12 +283,12 @@ Running WordNet
 
 In order to run WordNet, you must set your PATH variable to include
 the directory that contains the WordNet binraries. By default, WordNet
-is installed in `/usr/local/WordNet-2.1'.  
+is installed in `/usr/local/WordNet-3.0'.  
 
 Several other environment variables may need to be set in order to
 run WordNet on your system:
 
-PATH - should include either `/usr/local/WordNet-2.1/bin' or the path
+PATH - should include either `/usr/local/WordNet-3.0/bin' or the path
 you specified with the `--prefix=' option to `configure', unless you
 installed WordNet in a directory that is already in your path.
 
@@ -295,7 +303,7 @@ TK_LIBRARY - on OS X, may need to be set to the directory that
 contains the `tk.tcl' file (usually a subidrectory of where the Tk
 library is installed).
 
-The command `wnb' starts the WordNet 2.1 browser application.  If any
+The command `wnb' starts the WordNet browser application.  If any
 of the above variables is not set, or not set properly, an error will
 occur when you run `wnb'.
 

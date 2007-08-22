@@ -99,11 +99,11 @@ set fontsp2offset(helvetica,2) 7;
 set fontsp2offset(helvetica,3) 11;
 
 set labonly 0
-set version "2.1"
+set version "3.0"
 
 if {$tcl_platform(platform) == "unix"} {
    if {[lsearch -exact [array names env] WNHOME] == -1} {
-	set resourcedir "/usr/local/WordNet-2.1/lib/wnres"
+	set resourcedir "/usr/local/WordNet-3.0/lib/wnres"
    } else {
 	set resourcedir "$env(WNHOME)/lib/wnres"
    }
@@ -114,25 +114,25 @@ if {$tcl_platform(platform) == "unix"} {
    set printcommand "lpr"
 }
 if {$tcl_platform(platform) == "windows"} {
-    set UserRegPath "HKEY_CURRENT_USER\\Software\\WordNet\\2.1"
+    set UserRegPath "HKEY_CURRENT_USER\\Software\\WordNet\\3.0"
     if { [registry values $UserRegPath "wnrc" ] != "" } {
 	eval [ registry get $UserRegPath "wnrc" ]
     }
     if { [registry values $UserRegPath "WNHome"] != "" } {
 	 append resourcedir [registry get $UserRegPath "WNHome"] "/lib/wnres"
     } else {
-    	 set MachineRegPath "HKEY_LOCAL_MACHINE\\Software\\WordNet\\2.1"
+    	 set MachineRegPath "HKEY_LOCAL_MACHINE\\Software\\WordNet\\3.0"
     	 if { [registry values $MachineRegPath "WNHome" ] != "" } {
      	    append resourcedir [registry get $MachineRegPath "WNHome"] "/lib/wnres"
 	 } else {
-          set resourcedir "C:/Program Files/WordNet/2.1/lib/wnres"
+          set resourcedir "C:/Program Files/WordNet/3.0/lib/wnres"
        }
     }
 }
 
 ### Startup
 
-wm title . "WordNet 2.1 Browser"
+wm title . "WordNet 3.0 Browser"
 
 ### Primary Functions
 
@@ -882,7 +882,7 @@ proc showaboutbox {} {
          -anchor w \
          -justify left \
          -font "-adobe-helvetica-medium-r-*-*-*-120-*-*-*-*-*-*" \
-         -text "Copyright 1991-2005\nPrinceton University Cognitive Science Lab"] \
+         -text "Copyright 1991-2006\nPrinceton University Cognitive Science Lab"] \
       [label .aboutbox.top.right.text6 \
          -anchor w \
          -justify left \
@@ -1779,8 +1779,9 @@ set posmenu(2) {
    { "Familiarity" 24 {} }
 }
 set posmenu(3) {
-   { "Synonyms/Related Nouns" 5 {} }
+   { "Synonyms" 5 {} }
    { "Antonyms" 1 {} }
+   { "Related Noun" 17 {} }
    { "This is a value of..." 18 {} }
    { "Derivationally related forms" 20 {} }
    { "Domain" 21 {} }
@@ -1788,8 +1789,9 @@ set posmenu(3) {
    { "Familiarity" 24 {} }
 }
 set posmenu(4) {
-   { "Synonyms/Stem Adjectives" 23 {} }
+   { "Synonyms" 23 {} }
    { "Antonyms" 1 {} }
+   { "Base Adjective" 17 {} }
    { "Derivationally related forms" 20 {} }
    { "Domain" 21 {} }
    { "Domain Terms" 22 {} }

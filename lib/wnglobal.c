@@ -2,7 +2,7 @@
 
    wnglobal.c - global variables used by various WordNet applications
 
-   $Id: wnglobal.c,v 1.55 2005/01/27 16:34:11 wn Rel $
+   $Id: wnglobal.c,v 1.56 2006/11/14 21:00:34 wn Exp $
 
 */
 
@@ -10,7 +10,7 @@
 #define NULL	0
 #endif
 
-char *wnrelease = "2.1";
+char *wnrelease = "3.0";
 
 /* Lexicographer file names and numbers */
 

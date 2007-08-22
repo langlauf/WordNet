@@ -122,6 +122,7 @@ VERSION = @VERSION@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_RANLIB = @ac_ct_RANLIB@
 ac_ct_STRIP = @ac_ct_STRIP@
+ac_prefix = @ac_prefix@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
 am__include = @am__include@
@@ -149,7 +150,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-EXTRA_DIST = README ChangeLog COPYING INSTALL AUTHORS doc dict include
+EXTRA_DIST = README ChangeLog COPYING INSTALL AUTHORS LICENSE doc dict include
 SUBDIRS = doc dict include lib src
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

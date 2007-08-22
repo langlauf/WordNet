@@ -135,6 +135,7 @@ VERSION = @VERSION@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_RANLIB = @ac_ct_RANLIB@
 ac_ct_STRIP = @ac_ct_STRIP@
+ac_prefix = @ac_prefix@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
 am__include = @am__include@
@@ -165,7 +166,7 @@ target_alias = @target_alias@
 lib_LIBRARIES = libWN.a
 libWN_a_SOURCES = binsrch.c morph.c search.c wnglobal.c wnhelp.c wnrtl.c wnutil.c
 libWN_a_CPPFLAGS = $(INCLUDES)
-INCLUDES = -I$(top_srcdir)/include
+INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/include
 SUBDIRS = wnres
 all: all-recursive
 

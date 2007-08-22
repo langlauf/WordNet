@@ -14,7 +14,7 @@
 #include <tk.h>
 #include <wn.h>
 
-static Id = "$Id: stubs.c,v 1.7 2005/04/29 19:01:57 wn Exp $";
+static char *Id = "$Id: stubs.c,v 1.7 2005/04/29 19:01:57 wn Exp $";
 
 static char resultbuf[SEARCHBUF];
 

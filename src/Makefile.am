@@ -8,5 +8,5 @@ wn_SOURCES = wn.c
 wn_CPPFLAGS = $(INCLUDES)
 wn_LDADD = $(LDADD)
 LDADD = -L$(top_srcdir)/lib -lWN
-INCLUDES = -I$(top_srcdir)/include $(TCL_INCLUDE_SPEC) $(TK_XINCLUDES) -I$(TK_PREFIX)/include
+INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/include $(TCL_INCLUDE_SPEC) $(TK_XINCLUDES) -I$(TK_PREFIX)/include
 

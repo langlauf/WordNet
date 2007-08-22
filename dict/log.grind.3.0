@@ -47,29 +47,29 @@ Processing adj.ppl...
 
 *** Statistics for ground files:
 
-81426 noun synsets
-13650 verb synsets
-3879 adj synsets
-3644 adv synsets
-3687 pertainym synsets
-11311 adjective satellite synsets
-117597 synsets in total (including satellite and pertainym synsets)
-81426 noun synsets have definitional glosses
-13650 verb synsets have definitional glosses
-3879 adj synsets have definitional glosses
-3644 adv synsets have definitional glosses
-3687 pertainym synsets have definitional glosses
-11311 adjective satellite synsets have definitional glosses
-117597 definitional glosses in total (including adjective satellite synsets)
-221100 pointers in total
-207018 synonyms in synsets
-147249 unique word phrases
-83312 word phrases of length 1
-54343 word phrases of length 2
-7724 word phrases of length 3
-1440 word phrases of length 4
-294 word phrases of length 5
-79 word phrases of length 6
+82115 noun synsets
+13767 verb synsets
+3812 adj synsets
+3621 adv synsets
+3651 pertainym synsets
+10693 adjective satellite synsets
+117659 synsets in total (including satellite and pertainym synsets)
+82115 noun synsets have definitional glosses
+13767 verb synsets have definitional glosses
+3812 adj synsets have definitional glosses
+3621 adv synsets have definitional glosses
+3651 pertainym synsets have definitional glosses
+10693 adjective satellite synsets have definitional glosses
+117659 definitional glosses in total (including adjective satellite synsets)
+225000 pointers in total
+206978 synonyms in synsets
+147306 unique word phrases
+83118 word phrases of length 1
+54533 word phrases of length 2
+7766 word phrases of length 3
+1454 word phrases of length 4
+298 word phrases of length 5
+80 word phrases of length 6
 28 word phrases of length 7
 20 word phrases of length 8
 9 word phrases of length 9
@@ -81,8 +81,8 @@ Done with sense counts...
 Figuring out byte offsets...
 Dumping data files...
 Done dumping data files...
-Reading cntlist...
-Done reading cntlist
+Cannot open file: cntlist
+Cannot order senses
 Dumping index files...
 Done dumping index files...
 Dumping sense index...

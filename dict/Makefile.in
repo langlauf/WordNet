@@ -108,6 +108,7 @@ VERSION = @VERSION@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_RANLIB = @ac_ct_RANLIB@
 ac_ct_STRIP = @ac_ct_STRIP@
+ac_prefix = @ac_prefix@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
 am__include = @am__include@
@@ -136,7 +137,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 dictdir = $(prefix)/dict
-dict_DATA = adj.exc adv.exc cntlist cntlist.rev data.adj data.adv data.noun data.verb frames.vrb index.adj index.adv index.noun index.sense index.verb log.grind.2.1 noun.exc sentidx.vrb sents.vrb verb.Framestext verb.exc
+dict_DATA = adj.exc adv.exc cntlist cntlist.rev data.adj data.adv data.noun data.verb frames.vrb index.adj index.adv index.noun index.sense index.verb log.grind.3.0 noun.exc sentidx.vrb sents.vrb verb.Framestext verb.exc lexnames
 all: all-am
 
 .SUFFIXES:

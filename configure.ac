@@ -2,11 +2,9 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT(WordNet, 2.1, [wordnet@princeton.edu], wordnet)
+AC_INIT(WordNet, 3.0, [wordnet@princeton.edu], wordnet)
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADER([config.h])
-
-AC_PREFIX_DEFAULT([/usr/local/WordNet-2.1])
 
 # Checks for programs.
 AC_PROG_CC
@@ -27,17 +25,30 @@ AC_CHECK_FUNCS([strchr strdup strrchr strstr strtol])
 
 AC_LANGINFO_CODESET
 
-AM_INIT_AUTOMAKE(WordNet, 2.1)
+AM_INIT_AUTOMAKE(WordNet, 3.0)
 
 SC_PATH_TCLCONFIG
 SC_PATH_TKCONFIG
 SC_LOAD_TCLCONFIG
 SC_LOAD_TKCONFIG
 
+# Set default installation prefix.
+AC_PREFIX_DEFAULT([/usr/local/WordNet-3.0])
+ac_prefix=$prefix
+if test "x$ac_prefix" = "xNONE"; then
+    ac_prefix=$ac_default_prefix
+fi
+AC_SUBST(ac_prefix)
+AH_TEMPLATE([DEFAULTPATH],[The default search path for WordNet data files])
+AC_DEFINE_UNQUOTED(DEFAULTPATH, ["$ac_prefix/dict"], [Default installation prefix.])
+
+#AC_DEFINE_UNQUOTED(DEFAULTPATH,"${prefix}/dict")
+
 # This doesn't do anything
 AC_CONFIG_COMMANDS([default])
 
-AC_CONFIG_FILES(Makefile dict/Makefile doc/Makefile doc/html/Makefile doc/man/Makefile doc/pdf/Makefile doc/ps/Makefile include/Makefile src/Makefile lib/Makefile lib/wnres/Makefile)
+AC_CONFIG_FILES(Makefile dict/Makefile doc/Makefile doc/html/Makefile doc/man/Makefile doc/pdf/Makefile doc/ps/Makefile include/Makefile include/tk/Makefile
+src/Makefile lib/Makefile lib/wnres/Makefile)
 
 AC_OUTPUT
 

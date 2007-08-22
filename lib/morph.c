@@ -8,6 +8,9 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 #include "wn.h"
 
 #ifdef _WINDOWS
@@ -18,7 +21,7 @@
 #define EXCFILE	"%s/%s.exc"
 #endif
 
-static char *Id = "$Id: morph.c,v 1.66 2005/03/18 18:14:24 wn Exp $";
+static char *Id = "$Id: morph.c,v 1.67 2006/11/14 21:00:23 wn Exp $";
 
 static char *sufx[] ={ 
     /* Noun suffixes */
@@ -123,7 +126,7 @@ static int do_init(void)
        If not set, check for WNHOME/dict, otherwise use DEFAULTPATH. */
 
 #ifdef _WINDOWS
-    if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT("Software\\WordNet\\2.1"),
+    if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT("Software\\WordNet\\3.0"),
 		     0, KEY_READ, &hkey) == ERROR_SUCCESS) {
 	dwSize = sizeof(searchdir);
 	RegQueryValueEx(hkey, TEXT("WNHome"),
@@ -131,7 +134,7 @@ static int do_init(void)
 	RegCloseKey(hkey);
 	strcat(searchdir, DICTDIR);
     }
-    else if (RegOpenKeyEx(HKEY_CURRENT_USER, TEXT("Software\\WordNet\\2.1"),
+    else if (RegOpenKeyEx(HKEY_CURRENT_USER, TEXT("Software\\WordNet\\3.0"),
 		     0, KEY_READ, &hkey) == ERROR_SUCCESS) {
 	dwSize = sizeof(searchdir);
 	RegQueryValueEx(hkey, TEXT("WNHome"),

@@ -22,7 +22,7 @@ pkglibdir = $(libdir)/WordNet
 pkgincludedir = $(includedir)/WordNet
 top_builddir = ..
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
-INSTALL = .././install-sh -c
+INSTALL = /usr/csl/bin/install -c
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
 install_sh_SCRIPT = $(install_sh) -c
@@ -47,6 +47,12 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 SOURCES =
 DIST_SOURCES =
+RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
+	html-recursive info-recursive install-data-recursive \
+	install-exec-recursive install-info-recursive \
+	install-recursive installcheck-recursive installdirs-recursive \
+	pdf-recursive ps-recursive uninstall-info-recursive \
+	uninstall-recursive
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -58,14 +64,15 @@ includeHEADERS_INSTALL = $(INSTALL_HEADER)
 HEADERS = $(include_HEADERS)
 ETAGS = etags
 CTAGS = ctags
+DIST_SUBDIRS = $(SUBDIRS)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /people/wn/src/Release/2.1/Unix/missing --run aclocal-1.9
+ACLOCAL = ${SHELL} /people/wn/src/Release/3.0/Unix/missing --run aclocal-1.9
 AMDEP_FALSE = #
 AMDEP_TRUE = 
-AMTAR = ${SHELL} /people/wn/src/Release/2.1/Unix/missing --run tar
-AUTOCONF = ${SHELL} /people/wn/src/Release/2.1/Unix/missing --run autoconf
-AUTOHEADER = ${SHELL} /people/wn/src/Release/2.1/Unix/missing --run autoheader
-AUTOMAKE = ${SHELL} /people/wn/src/Release/2.1/Unix/missing --run automake-1.9
+AMTAR = ${SHELL} /people/wn/src/Release/3.0/Unix/missing --run tar
+AUTOCONF = ${SHELL} /people/wn/src/Release/3.0/Unix/missing --run autoconf
+AUTOHEADER = ${SHELL} /people/wn/src/Release/3.0/Unix/missing --run autoheader
+AUTOMAKE = ${SHELL} /people/wn/src/Release/3.0/Unix/missing --run automake-1.9
 AWK = nawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -88,14 +95,14 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /people/wn/src/Release/2.1/Unix/missing --run makeinfo
+MAKEINFO = ${SHELL} /people/wn/src/Release/3.0/Unix/missing --run makeinfo
 OBJEXT = o
 PACKAGE = WordNet
 PACKAGE_BUGREPORT = wordnet@princeton.edu
 PACKAGE_NAME = WordNet
-PACKAGE_STRING = WordNet 2.1
+PACKAGE_STRING = WordNet 3.0
 PACKAGE_TARNAME = wordnet
-PACKAGE_VERSION = 2.1
+PACKAGE_VERSION = 3.0
 PATH_SEPARATOR = :
 RANLIB = ranlib
 SET_MAKE = 
@@ -107,10 +114,11 @@ TK_LIBS = -L/usr/openwin/lib -lX11 -ldl  -lpthread -lsocket -lnsl -lm
 TK_LIB_SPEC = -L/usr/csl/lib -ltk8.4
 TK_PREFIX = /usr/csl
 TK_XINCLUDES = -I/usr/openwin/include
-VERSION = 2.1
+VERSION = 3.0
 ac_ct_CC = gcc
 ac_ct_RANLIB = ranlib
 ac_ct_STRIP = 
+ac_prefix = /usr/local/WordNet-3.0
 am__fastdepCC_FALSE = #
 am__fastdepCC_TRUE = 
 am__include = include
@@ -121,25 +129,26 @@ am__untar = ${AMTAR} xf -
 bindir = ${exec_prefix}/bin
 build_alias = 
 datadir = ${prefix}/share
-exec_prefix = /dummy
+exec_prefix = ${prefix}
 host_alias = 
 includedir = ${prefix}/include
 infodir = ${prefix}/info
-install_sh = /people/wn/src/Release/2.1/Unix/install-sh
+install_sh = /people/wn/src/Release/3.0/Unix/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localstatedir = ${prefix}/var
 mandir = ${prefix}/man
 mkdir_p = $(install_sh) -d
 oldincludedir = /usr/include
-prefix = /usr/local/WordNet-2.1
+prefix = /usr/local/WordNet-3.0
 program_transform_name = s,x,x,
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
 target_alias = 
 include_HEADERS = wn.h
-all: all-am
+SUBDIRS = tk
+all: all-recursive
 
 .SUFFIXES:
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
@@ -190,6 +199,65 @@ uninstall-includeHEADERS:
 	  rm -f "$(DESTDIR)$(includedir)/$$f"; \
 	done
 
+# This directory's subdirectories are mostly independent; you can cd
+# into them and run `make' without going through this Makefile.
+# To change the values of `make' variables: instead of editing Makefiles,
+# (1) if the variable is set in `config.status', edit `config.status'
+#     (which will cause the Makefiles to be regenerated when you run `make');
+# (2) otherwise, pass the desired values on the `make' command line.
+$(RECURSIVE_TARGETS):
+	@set fnord $$MAKEFLAGS; amf=$$2; \
+	dot_seen=no; \
+	target=`echo $@ | sed s/-recursive//`; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  echo "Making $$target in $$subdir"; \
+	  if test "$$subdir" = "."; then \
+	    dot_seen=yes; \
+	    local_target="$$target-am"; \
+	  else \
+	    local_target="$$target"; \
+	  fi; \
+	  (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+	   || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	done; \
+	if test "$$dot_seen" = "no"; then \
+	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
+	fi; test -z "$$fail"
+
+mostlyclean-recursive clean-recursive distclean-recursive \
+maintainer-clean-recursive:
+	@set fnord $$MAKEFLAGS; amf=$$2; \
+	dot_seen=no; \
+	case "$@" in \
+	  distclean-* | maintainer-clean-*) list='$(DIST_SUBDIRS)' ;; \
+	  *) list='$(SUBDIRS)' ;; \
+	esac; \
+	rev=''; for subdir in $$list; do \
+	  if test "$$subdir" = "."; then :; else \
+	    rev="$$subdir $$rev"; \
+	  fi; \
+	done; \
+	rev="$$rev ."; \
+	target=`echo $@ | sed s/-recursive//`; \
+	for subdir in $$rev; do \
+	  echo "Making $$target in $$subdir"; \
+	  if test "$$subdir" = "."; then \
+	    local_target="$$target-am"; \
+	  else \
+	    local_target="$$target"; \
+	  fi; \
+	  (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+	   || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+tags-recursive:
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  test "$$subdir" = . || (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) tags); \
+	done
+ctags-recursive:
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  test "$$subdir" = . || (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) ctags); \
+	done
+
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
 	unique=`for i in $$list; do \
@@ -200,10 +268,23 @@ ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	mkid -fID $$unique
 tags: TAGS
 
-TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+TAGS: tags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
 	tags=; \
 	here=`pwd`; \
+	if ($(ETAGS) --etags-include --version) >/dev/null 2>&1; then \
+	  include_option=--etags-include; \
+	  empty_fix=.; \
+	else \
+	  include_option=--include; \
+	  empty_fix=; \
+	fi; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  if test "$$subdir" = .; then :; else \
+	    test ! -f $$subdir/TAGS || \
+	      tags="$$tags $$include_option=$$here/$$subdir/TAGS"; \
+	  fi; \
+	done; \
 	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
 	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
@@ -216,7 +297,7 @@ TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 	    $$tags $$unique; \
 	fi
 ctags: CTAGS
-CTAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+CTAGS: ctags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
 	tags=; \
 	here=`pwd`; \
@@ -265,22 +346,38 @@ distdir: $(DISTFILES)
 	    || exit 1; \
 	  fi; \
 	done
+	list='$(DIST_SUBDIRS)'; for subdir in $$list; do \
+	  if test "$$subdir" = .; then :; else \
+	    test -d "$(distdir)/$$subdir" \
+	    || $(mkdir_p) "$(distdir)/$$subdir" \
+	    || exit 1; \
+	    distdir=`$(am__cd) $(distdir) && pwd`; \
+	    top_distdir=`$(am__cd) $(top_distdir) && pwd`; \
+	    (cd $$subdir && \
+	      $(MAKE) $(AM_MAKEFLAGS) \
+	        top_distdir="$$top_distdir" \
+	        distdir="$$distdir/$$subdir" \
+	        distdir) \
+	      || exit 1; \
+	  fi; \
+	done
 check-am: all-am
-check: check-am
+check: check-recursive
 all-am: Makefile $(HEADERS)
-installdirs:
+installdirs: installdirs-recursive
+installdirs-am:
 	for dir in "$(DESTDIR)$(includedir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
-install: install-am
-install-exec: install-exec-am
-install-data: install-data-am
-uninstall: uninstall-am
+install: install-recursive
+install-exec: install-exec-recursive
+install-data: install-data-recursive
+uninstall: uninstall-recursive
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
 
-installcheck: installcheck-am
+installcheck: installcheck-recursive
 install-strip:
 	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
 	  install_sh_PROGRAM="$(INSTALL_STRIP_PROGRAM)" INSTALL_STRIP_FLAG=-s \
@@ -296,21 +393,21 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-clean: clean-am
+clean: clean-recursive
 
 clean-am: clean-generic mostlyclean-am
 
-distclean: distclean-am
+distclean: distclean-recursive
 	-rm -f Makefile
 distclean-am: clean-am distclean-generic distclean-tags
 
-dvi: dvi-am
+dvi: dvi-recursive
 
 dvi-am:
 
-html: html-am
+html: html-recursive
 
-info: info-am
+info: info-recursive
 
 info-am:
 
@@ -318,40 +415,44 @@ install-data-am: install-includeHEADERS
 
 install-exec-am:
 
-install-info: install-info-am
+install-info: install-info-recursive
 
 install-man:
 
 installcheck-am:
 
-maintainer-clean: maintainer-clean-am
+maintainer-clean: maintainer-clean-recursive
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
-mostlyclean: mostlyclean-am
+mostlyclean: mostlyclean-recursive
 
 mostlyclean-am: mostlyclean-generic
 
-pdf: pdf-am
+pdf: pdf-recursive
 
 pdf-am:
 
-ps: ps-am
+ps: ps-recursive
 
 ps-am:
 
 uninstall-am: uninstall-includeHEADERS uninstall-info-am
 
-.PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	ctags distclean distclean-generic distclean-tags distdir dvi \
-	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-exec install-exec-am \
-	install-includeHEADERS install-info install-info-am \
-	install-man install-strip installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-generic pdf pdf-am ps ps-am tags \
-	uninstall uninstall-am uninstall-includeHEADERS \
-	uninstall-info-am
+uninstall-info: uninstall-info-recursive
+
+.PHONY: $(RECURSIVE_TARGETS) CTAGS GTAGS all all-am check check-am \
+	clean clean-generic clean-recursive ctags ctags-recursive \
+	distclean distclean-generic distclean-recursive distclean-tags \
+	distdir dvi dvi-am html html-am info info-am install \
+	install-am install-data install-data-am install-exec \
+	install-exec-am install-includeHEADERS install-info \
+	install-info-am install-man install-strip installcheck \
+	installcheck-am installdirs installdirs-am maintainer-clean \
+	maintainer-clean-generic maintainer-clean-recursive \
+	mostlyclean mostlyclean-generic mostlyclean-recursive pdf \
+	pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
+	uninstall-includeHEADERS uninstall-info-am
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -16,7 +16,7 @@
 
 #include "wn.h"
 
-static char *Id = "$Id: search.c,v 1.165 2005/02/24 15:36:00 wn Exp $";
+static char *Id = "$Id: search.c,v 1.166 2006/11/14 20:52:45 wn Exp $";
 
 /* For adjectives, indicates synset type */
 
@@ -1062,10 +1062,16 @@ static void printseealso(SynsetPtr synptr)
 {
     SynsetPtr cursyn;
     int i, first = 1;
-   int svwnsnsflag;
-    static char firstline[] = "          Also See-> ";
-    static char otherlines[] = "; ";
-    char *prefix = firstline;
+    int svwnsnsflag;
+    char firstline_v[] = "          Phrasal Verb-> ";
+    char firstline_nar[] = "          Also See-> ";
+    char otherlines[] = "; ";
+    char *prefix;
+
+    if ( getpos( synptr->pos ) == VERB )
+	prefix = firstline_v;
+    else
+	prefix = firstline_nar;
 
     /* Find all SEEALSO pointers from the searchword and print the
        word or synset pointed to. */
@@ -1494,10 +1500,10 @@ char *findtheinfo(char *searchstr, int dbase, int ptrtyp, int whichsense)
 			    traceptrs(cursyn, ptrtyp, dbase, depth);
 		    
 			    if (dbase == ADJ) {
-			    	traceptrs(cursyn, PERTPTR, dbase, depth);
+/*			    	traceptrs(cursyn, PERTPTR, dbase, depth); */
 			    	traceptrs(cursyn, PPLPTR, dbase, depth);
 			    } else if (dbase == ADV) {
-			    	traceptrs(cursyn, PERTPTR, dbase, depth);
+/*			    	traceptrs(cursyn, PERTPTR, dbase, depth);*/
 			    }
 
 			    if (saflag)	/* print SEE ALSO pointers */
@@ -1505,6 +1511,13 @@ char *findtheinfo(char *searchstr, int dbase, int ptrtyp, int whichsense)
 			    
 			    if (dbase == VERB && frflag)
 			    	printframe(cursyn, 0);
+			    break;
+
+			case PERTPTR:
+			    printsns(cursyn, sense + 1);
+			    prflag = 1;
+		    
+			    traceptrs(cursyn, PERTPTR, dbase, depth);
 			    break;
 
 			case DERIVATION:
@@ -2259,6 +2272,9 @@ static void interface_doevents (void) {
   Revision log: (since version 1.5)
   
   $Log: search.c,v $
+  Revision 1.166  2006/11/14 20:52:45  wn
+  for 2.1
+
   Revision 1.165  2005/02/24 15:36:00  wn
   fixed bug - coordinate search was missing INSTANCE pointers
 

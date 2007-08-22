@@ -1,5 +1,5 @@
 
-		This is the README file for WordNet 2.1
+		This is the README file for WordNet 3.0
 
 1. About WordNet
 
@@ -69,10 +69,10 @@ http://wordnet.princeton.edu/contact
 
 4. Current Release
 
-WordNet Version 2.1 is the latest version available for download.  Two
+WordNet Version 3.0 is the latest version available for download.  Two
 basic database packages are available - one for Windows and one for
 Unix platforms (including Mac OS X).  See the file ChangeLog (Unix) or
-CHANGES.txt (Windows) for a list of changes from version 2.0.
+CHANGES.txt (Windows) for a list of changes from previous versions.
 
 WordNet packages can either be downloaded from our web site via:
 
@@ -81,7 +81,7 @@ http://wordnet.princeton.edu/obtain
 The Windows package is a self-extracting archive that installs itself
 when you double-click on it.
 
-With Version 2.1, we have changed the Unix package to a GNU Autotools
+Beginning with Version 2.1, we changed the Unix package to a GNU Autotools
 package.  The WordNet browser makes use of the open source Tcl and Tk
 packages. Many systems come with either or both pre-installed.  If
 your system doesn't (some systems have Tcl installed, but not Tk)

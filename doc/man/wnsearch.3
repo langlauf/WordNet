@@ -1,6 +1,6 @@
 '\" t
 .\" $Id$
-.TH WNSEARCH 3WN  "Jan 2005" "WordNet 2.1" "WordNet\(tm Library Functions"
+.TH WNSEARCH 3WN  "Dec 2006" "WordNet 3.0" "WordNet\(tm Library Functions"
 .SH NAME
 findtheinfo, findtheinfo_ds, is_defined, in_wn, index_lookup, parse_index, getindex, read_synset, parse_synset, free_syns, free_synset, free_index, traceptrs_ds, do_trace
 .SH SYNOPSIS
@@ -59,7 +59,7 @@ following:
 is the primary search algorithm for use with database interface
 applications.  Search results are automatically formatted, and a
 pointer to the text buffer is returned.  All searches listed in 
-.B WNHOME/include/wnconsts.h
+.B WNHOME/include/wn.h
 can be done by 
 .BR findtheinfo(\|) .
 .B findtheinfo_ds(\|)
@@ -89,7 +89,7 @@ below, for detailed information on the linked lists returned.
 \fBis_defined(\|)\fP sets a bit for each search type that is valid for
 \fIsearchstr\fP in \fIpos\fP, and returns the resulting unsigned
 integer.  Each bit number corresponds to a pointer type constant
-defined in \fBWNHOME/include/wnconsts.h\fP.  For example, if bit 2 is
+defined in \fBWNHOME/include/wn.h\fP.  For example, if bit 2 is
 set, the
 .SB HYPERPTR
 search is valid for \fIsearchstr\fP.  There are 29 possible searches.

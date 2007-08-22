@@ -22,6 +22,9 @@
 #include <string.h>
 #include <stdlib.h>
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 #include "wn.h"
 
 static int do_init();
@@ -128,14 +131,14 @@ static int do_init(void)
        If not set, check for WNHOME/dict, otherwise use DEFAULTPATH. */
 
 #ifdef _WINDOWS
-    if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT("Software\\WordNet\\2.1"),
+    if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT("Software\\WordNet\\3.0"),
 		     0, KEY_READ, &hkey) == ERROR_SUCCESS) {
 	dwSize = sizeof(searchdir);
 	RegQueryValueEx(hkey, TEXT("WNHome"),
 			NULL, &dwType, searchdir, &dwSize);
 	RegCloseKey(hkey);
 	strcat(searchdir, DICTDIR);
-    } else if (RegOpenKeyEx(HKEY_CURRENT_USER, TEXT("Software\\WordNet\\2.1"),
+    } else if (RegOpenKeyEx(HKEY_CURRENT_USER, TEXT("Software\\WordNet\\3.0"),
 		     0, KEY_READ, &hkey) == ERROR_SUCCESS) {
 	dwSize = sizeof(searchdir);
 	RegQueryValueEx(hkey, TEXT("WNHome"),
